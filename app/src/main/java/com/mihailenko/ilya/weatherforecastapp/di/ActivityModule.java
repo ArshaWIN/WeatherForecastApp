@@ -1,20 +1,21 @@
-package ru.smedialink.eagleviewer.di;
+package com.mihailenko.ilya.weatherforecastapp.di;
+
+
 
 
 import android.content.Context;
 
+import com.mihailenko.ilya.weatherforecastapp.ui.view.base.BaseActivity;
+
 import dagger.Module;
 import dagger.Provides;
-import ru.smedialink.eagleviewer.common.MaterialDialogsShower;
-import ru.smedialink.eagleviewer.ui.activities.base.BaseActivityMVP;
-import ru.smedialink.eagleviewer.ui.interfaces.DialogShower;
-import ru.smedialink.eagleviewer.ui.widgets.LoadingIndicator;
 
 @Module
 public class ActivityModule {
-    private BaseActivityMVP activity;
 
-    public ActivityModule(BaseActivityMVP activity) {
+    private BaseActivity activity;
+
+    public ActivityModule(BaseActivity activity) {
         this.activity = activity;
 
     }
@@ -23,17 +24,5 @@ public class ActivityModule {
     @Provides
     Context provideContext() {
         return activity;
-    }
-
-    @PerBaseActivity
-    @Provides
-    LoadingIndicator provideLoadingIndicator() {
-        return new LoadingIndicator(activity);
-    }
-
-    @PerBaseActivity
-    @Provides
-    DialogShower provideDialogShower() {
-        return new MaterialDialogsShower(activity);
     }
 }

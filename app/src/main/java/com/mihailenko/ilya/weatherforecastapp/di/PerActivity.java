@@ -1,4 +1,4 @@
-package ru.smedialink.eagleviewer.di;
+package com.mihailenko.ilya.weatherforecastapp.di;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -11,5 +11,5 @@ import javax.inject.Scope;
 
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
-public @interface PerBaseActivity {
+public @interface PerActivity {
 }

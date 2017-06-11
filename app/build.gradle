@@ -59,5 +59,7 @@ dependencies {
     compile "com.google.dagger:dagger:$daggerVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
 
+    compile 'com.jakewharton.timber:timber:4.5.1'
+
     testCompile 'junit:junit:4.12'
 }

@@ -1,4 +1,4 @@
-package ru.smedialink.eagleviewer.ui.interfaces;
+package com.mihailenko.ilya.weatherforecastapp.interfaces;
 
 import android.support.annotation.StringRes;
 

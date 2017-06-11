@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WeatherForecastApp</string>
+    <string name="current_weather">Current weather</string>
+    <string name="search_city">Search city</string>
 </resources>

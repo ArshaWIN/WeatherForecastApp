@@ -1,10 +1,9 @@
-package com.mihailenko.ilya.weatherforecastapp.ui.main;
+package com.mihailenko.ilya.weatherforecastapp.ui.view.main;
 
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 
 import com.mihailenko.ilya.weatherforecastapp.R;
 

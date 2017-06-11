@@ -1,4 +1,4 @@
-package ru.smedialink.eagleviewer.di;
+package com.mihailenko.ilya.weatherforecastapp.di;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

@@ -1,9 +1,8 @@
-package ru.smedialink.eagleviewer.ui.interfaces;
+package com.mihailenko.ilya.weatherforecastapp.interfaces;
 
 public interface HasProgressIndication {
     void onStartProgress();
 
     void onEndProgress();
 
-    void setProgressText(String progressText);
 }

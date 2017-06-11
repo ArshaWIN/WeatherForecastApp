@@ -1,4 +1,4 @@
-package ru.smedialink.eagleviewer.ui.interfaces;
+package com.mihailenko.ilya.weatherforecastapp.interfaces;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
