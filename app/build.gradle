@@ -33,6 +33,7 @@ final rxJavaVersion = '1.3.0'
 final rxAndroidVersion = '1.2.1'
 final retrofitVersion = '2.3.0'
 final supportVersion = '25.3.1'
+final permissionDispatcherVersion = "2.4.0"
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -48,18 +49,26 @@ dependencies {
     // RX
     compile "io.reactivex:rxandroid:$rxAndroidVersion"
     compile "io.reactivex:rxjava:$rxJavaVersion"
+    compile 'pl.charmas.android:android-reactive-location:0.10@aar'
 
     //Network
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
     compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
 
     //DI
     compile "com.google.dagger:dagger:$daggerVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
 
+    // Permission dispatcher
+    compile "com.github.hotchemi:permissionsdispatcher:${permissionDispatcherVersion}"
+    annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:${permissionDispatcherVersion}"
+
     compile 'com.jakewharton.timber:timber:4.5.1'
+    compile 'com.github.bumptech.glide:glide:3.8.0'
+    compile 'com.jayway.jsonpath:json-path:2.2.0'
+
 
     testCompile 'junit:junit:4.12'
 }
