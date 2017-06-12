@@ -23,4 +23,7 @@ public interface AppComponent {
     MessageShower provideToastMessageShower();
 
     WeatherApi provideWeatherApi();
+
+    LocationManager provideLocationManager();
+
 }

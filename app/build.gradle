@@ -67,6 +67,7 @@ dependencies {
 
     compile 'com.jakewharton.timber:timber:4.5.1'
     compile 'com.github.bumptech.glide:glide:3.8.0'
+    compile 'com.afollestad.material-dialogs:core:0.9.3.0'
     compile('com.jayway.jsonpath:json-path:2.2.0')
             { exclude group: 'org.ow2.asm' }
 

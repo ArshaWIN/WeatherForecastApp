@@ -5,6 +5,7 @@ import android.content.Context;
 import android.location.LocationManager;
 
 import com.mihailenko.ilya.weatherforecastapp.ui.view.base.BaseActivity;
+import com.mihailenko.ilya.weatherforecastapp.widget.LoadingIndicator;
 
 import javax.inject.Singleton;
 
@@ -27,9 +28,9 @@ public class ActivityModule {
         return activity;
     }
 
+    @PerBaseActivity
     @Provides
-    @Singleton
-    LocationManager provideLocationManager() {
-        return (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
+    LoadingIndicator provideLoadingIndicator() {
+        return new LoadingIndicator(activity);
     }
 }

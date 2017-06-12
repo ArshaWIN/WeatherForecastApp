@@ -4,4 +4,9 @@
     <string name="search_city">Search city</string>
     <string name="error_network">Internet connection problem... please, check internet and try again</string>
     <string name="choose_mode">Choose a mode</string>
+    <string name="error_location">"Couldn't find current location"</string>
+    <string name="gps_disable_text">Your GPS seems to be disabled, you need to enable it</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="never_ask_gps">This mode cannot work without GPS. Please, enable it</string>
 </resources>

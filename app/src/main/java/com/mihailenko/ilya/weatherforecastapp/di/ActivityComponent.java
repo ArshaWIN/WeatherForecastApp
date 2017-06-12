@@ -7,6 +7,7 @@ import android.location.LocationManager;
 import com.mihailenko.ilya.weatherforecastapp.di.app.AppComponent;
 import com.mihailenko.ilya.weatherforecastapp.interfaces.MessageShower;
 import com.mihailenko.ilya.weatherforecastapp.network.WeatherApi;
+import com.mihailenko.ilya.weatherforecastapp.widget.LoadingIndicator;
 
 import dagger.Component;
 
@@ -23,4 +24,5 @@ public interface ActivityComponent {
 
     LocationManager provideLocationManager();
 
+    LoadingIndicator provideLoadingIndicator();
 }

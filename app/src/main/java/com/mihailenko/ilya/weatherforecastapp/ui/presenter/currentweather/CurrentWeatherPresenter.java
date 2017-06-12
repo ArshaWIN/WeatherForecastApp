@@ -13,5 +13,5 @@ public abstract class CurrentWeatherPresenter extends BasePresenter<CurrentWeath
         super(view);
     }
 
-    public abstract void getWeather(String city);
+    public abstract void needWeather();
 }
