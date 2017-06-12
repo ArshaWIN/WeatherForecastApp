@@ -9,6 +9,7 @@ import com.mihailenko.ilya.weatherforecastapp.interfaces.LocationListener;
 import com.mihailenko.ilya.weatherforecastapp.ui.view.currentweather.CurrentWeatherView;
 import com.mihailenko.ilya.weatherforecastapp.utils.rx.RxSchedulers;
 
+import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
 import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 
@@ -21,12 +22,13 @@ public class CurrentWeatherPresenterImpl extends CurrentWeatherPresenter
 
     private final ICurrentWeatherInteractor weatherInteractor;
     private final MyLocationManager myLocationManager;
+    private final ReactiveLocationProvider reactiveLocationProvider;
 
-    public CurrentWeatherPresenterImpl(CurrentWeatherView view, ICurrentWeatherInteractor weatherInteractor, MyLocationManager myLocationManager) {
+    public CurrentWeatherPresenterImpl(CurrentWeatherView view, ICurrentWeatherInteractor weatherInteractor, MyLocationManager myLocationManager, ReactiveLocationProvider reactiveLocationProvider) {
         super(view);
         this.weatherInteractor = weatherInteractor;
         this.myLocationManager = myLocationManager;
-
+        this.reactiveLocationProvider = reactiveLocationProvider;
     }
 
     @Override
@@ -46,8 +48,19 @@ public class CurrentWeatherPresenterImpl extends CurrentWeatherPresenter
 
     @Override
     public void onLocationGet(Location location) {
-        view.onEndProgress();
         Timber.d("Get location %s", location);
+
+        reactiveLocationProvider.getReverseGeocodeObservable(location.getLatitude(), location.getLongitude(), 1)
+                .compose(RxSchedulers.getIOToMainTransformer())
+                .map(addresses -> addresses.get(0))
+                .doOnSubscribe(view::onStartProgress)
+                .doAfterTerminate(view::onEndProgress)
+                .subscribe(address -> onCityRecognized(address.getLocality()), Throwable::printStackTrace);
+    }
+
+    private void onCityRecognized(String city) {
+        getWeather(city);
+        view.setToolbarTittle(city);
     }
 
     @Override

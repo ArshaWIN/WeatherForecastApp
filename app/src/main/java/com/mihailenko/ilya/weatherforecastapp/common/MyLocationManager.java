@@ -31,9 +31,9 @@ public class MyLocationManager {
     private Location myLocation;
 
 
-    public MyLocationManager(Activity activity) {
+    public MyLocationManager(Activity activity, ReactiveLocationProvider reactiveLocationProvider) {
         this.activity = activity;
-        reactiveLocationProvider = new ReactiveLocationProvider(activity);
+        this.reactiveLocationProvider =  reactiveLocationProvider;
 
         listenToLocationUpdates();
 

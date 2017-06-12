@@ -26,6 +26,7 @@ import javax.inject.Named;
 
 import dagger.Module;
 import dagger.Provides;
+import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
 
 /**
  * Created by Ilya on 12.06.2017.
@@ -42,14 +43,20 @@ public class CurrentWeatherModule {
 
     @PerActivity
     @Provides
-    MyLocationManager provideMyLocationManager() {
-        return new MyLocationManager(activity);
+    MyLocationManager provideMyLocationManager(ReactiveLocationProvider reactiveLocationProvider) {
+        return new MyLocationManager(activity, reactiveLocationProvider);
     }
 
     @PerActivity
     @Provides
-    CurrentWeatherPresenter provideCurrentWeatherPresenter(ICurrentWeatherInteractor weatherInteractor, MyLocationManager myLocationManager) {
-        return new CurrentWeatherPresenterImpl(activity, weatherInteractor, myLocationManager);
+    ReactiveLocationProvider provideReactiveLocationProvider() {
+        return new ReactiveLocationProvider(activity);
+    }
+
+    @PerActivity
+    @Provides
+    CurrentWeatherPresenter provideCurrentWeatherPresenter(ICurrentWeatherInteractor weatherInteractor, MyLocationManager myLocationManager, ReactiveLocationProvider reactiveLocationProvider) {
+        return new CurrentWeatherPresenterImpl(activity, weatherInteractor, myLocationManager, reactiveLocationProvider);
     }
 
     @PerActivity
