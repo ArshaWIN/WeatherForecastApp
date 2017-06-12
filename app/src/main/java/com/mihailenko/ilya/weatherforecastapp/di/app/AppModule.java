@@ -1,5 +1,6 @@
 package com.mihailenko.ilya.weatherforecastapp.di.app;
 
+import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
@@ -29,6 +30,7 @@ public class AppModule {
     Context provideContext() {
         return appContext;
     }
+
 
     @Provides
     @Singleton

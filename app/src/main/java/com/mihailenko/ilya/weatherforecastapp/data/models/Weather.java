@@ -1,52 +1,29 @@
 package com.mihailenko.ilya.weatherforecastapp.data.models;
 
-import com.google.gson.annotations.SerializedName;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by Ilya on 11.06.2017.
+ * Created by Ilya on 12.06.2017.
  */
 
 public class Weather {
+    private String city;
+    private List<Forecast> forecasts;
 
-    @SerializedName("conditions")
-    private String conditions;
-
-    @SerializedName("high")
-    private Temperature highTemperature;
-
-    @SerializedName("low")
-    private Temperature lowTemperature;
-
-    @SerializedName("date")
-    private Date date;
-
-    @SerializedName("avehumidity")
-    private String humidity;
-
-    @SerializedName("icon_url")
-    private String iconUrl;
-
-    public String getConditions() {
-        return conditions;
+    public String getCity() {
+        return city;
     }
 
-    public Temperature getHighTemperature() {
-        return highTemperature;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public Temperature getLowTemperature() {
-        return lowTemperature;
+    public List<Forecast> getForecasts() {
+        return forecasts;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public String getHumidity() {
-        return humidity;
-    }
-
-    public String getIconUrl() {
-        return iconUrl;
+    public void setForecasts(List<Forecast> forecasts) {
+        this.forecasts = forecasts;
     }
 }

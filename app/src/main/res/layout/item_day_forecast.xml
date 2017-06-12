@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="forecast"
+            type="com.mihailenko.ilya.weatherforecastapp.data.item.ForecastDayItem" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+
+        <TextView
+            android:id="@+id/day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@{forecast.day}"
+            tools:text="Sunday" />
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/day"
+            android:background="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/temperature_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/line1"
+            android:text='@{String.format("Min: %s\u2103", forecast.lowTemperature)}'
+            tools:text="from 24 C" />
+
+        <TextView
+            android:id="@+id/temperature_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/temperature_from"
+            android:text='@{String.format("Max: %s\u2103", forecast.highTemperature)}'
+            tools:text="to 29 C" />
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/temperature_to"
+            android:background="@color/colorAccent" />
+
+        <ImageView
+            app:imageUrl="@{forecast.iconUrl}"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            tools:src="@drawable/ic_umbrella" />
+
+        <TextView
+            android:id="@id/humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text='@{String.format("Humidity: %s %", forecast.humidity)}'
+            android:layout_toEndOf="@id/line2"
+            tools:text="humidity 25 %" />
+
+        <View
+            android:id="@+id/line3"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/humidity"
+            android:background="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/wind"
+            android:text='@{String.format("Ave wind speed: %s kph", forecast.windSpeed)}'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/line3"
+            tools:text="wind 23 ms" />
+    </RelativeLayout>
+</layout>

@@ -1,6 +1,10 @@
 package com.mihailenko.ilya.weatherforecastapp.di.app;
 
+import android.content.Context;
+
 import com.mihailenko.ilya.weatherforecastapp.di.RestModule;
+import com.mihailenko.ilya.weatherforecastapp.interfaces.MessageShower;
+import com.mihailenko.ilya.weatherforecastapp.network.WeatherApi;
 
 import javax.inject.Singleton;
 
@@ -13,5 +17,9 @@ import dagger.Component;
 @Component(modules = {AppModule.class, RestModule.class})
 @Singleton
 public interface AppComponent {
+    Context getContext();
 
+    MessageShower provideToastMessageShower();
+
+    WeatherApi provideWeatherApi();
 }

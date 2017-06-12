@@ -1,6 +1,8 @@
 package com.mihailenko.ilya.weatherforecastapp.network;
 
+import com.google.gson.Gson;
 import com.mihailenko.ilya.weatherforecastapp.BuildConfig;
+import com.mihailenko.ilya.weatherforecastapp.network.interceptors.NetworkErrorInterceptor;
 import com.mihailenko.ilya.weatherforecastapp.utils.StringUtils;
 
 import java.util.concurrent.TimeUnit;
@@ -29,20 +31,21 @@ public class NetworkService implements ApiProvider {
     private static final long NETWORK_TIMEOUT_SECONDS = 30;
 
     @Inject
-    public NetworkService(HttpLoggingInterceptor loggingInterceptor) {
+    public NetworkService(HttpLoggingInterceptor loggingInterceptor,
+                          NetworkErrorInterceptor networkErrorInterceptor,
+                          Gson gson) {
 
 
         OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder()
-//                .addInterceptor(authorizationInterceptor)
-//                .addInterceptor(noInternetInterceptor)
                 .addInterceptor(loggingInterceptor)
+                .addInterceptor(networkErrorInterceptor)
                 .connectTimeout(NETWORK_TIMEOUT_SECONDS, TimeUnit.SECONDS)
                 .readTimeout(NETWORK_TIMEOUT_SECONDS, TimeUnit.SECONDS)
                 .writeTimeout(NETWORK_TIMEOUT_SECONDS, TimeUnit.SECONDS);
 
         Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
                 .baseUrl(getUrlWithKey())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.createWithScheduler(Schedulers.io()));
 
 
