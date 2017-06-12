@@ -1,4 +1,4 @@
-package com.mihailenko.ilya.weatherforecastapp.data.models;
+package com.mihailenko.ilya.weatherforecastapp.data.models.weather;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,6 +1,6 @@
 package com.mihailenko.ilya.weatherforecastapp.data.item;
 
-import com.mihailenko.ilya.weatherforecastapp.data.models.Forecast;
+import com.mihailenko.ilya.weatherforecastapp.data.models.weather.Forecast;
 
 /**
  * Created by Ilya on 12.06.2017.

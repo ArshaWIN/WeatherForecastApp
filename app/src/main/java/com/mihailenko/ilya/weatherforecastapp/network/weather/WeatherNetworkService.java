@@ -1,16 +1,17 @@
-package com.mihailenko.ilya.weatherforecastapp.network;
+package com.mihailenko.ilya.weatherforecastapp.network.weather;
 
 import com.google.gson.Gson;
-import com.mihailenko.ilya.weatherforecastapp.BuildConfig;
 import com.mihailenko.ilya.weatherforecastapp.network.interceptors.NetworkErrorInterceptor;
-import com.mihailenko.ilya.weatherforecastapp.utils.StringUtils;
+import com.mihailenko.ilya.weatherforecastapp.network.interceptors.QueryInterceptor;
+import com.mihailenko.ilya.weatherforecastapp.network.places.GooglePlacesApi;
+import com.mihailenko.ilya.weatherforecastapp.network.weather.WeatherApi;
+import com.mihailenko.ilya.weatherforecastapp.network.weather.WeatherApiConstans;
+import com.mihailenko.ilya.weatherforecastapp.network.weather.WeatherApiProvider;
 
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -23,17 +24,17 @@ import rx.schedulers.Schedulers;
  * Created by Ilya on 11.06.2017.
  */
 @Singleton
-public class NetworkService implements ApiProvider {
-    private static final String BASE_URL = ApiConstans.BASE_URL;
+public class WeatherNetworkService implements WeatherApiProvider {
+    private static final String BASE_URL = WeatherApiConstans.BASE_URL;
 
     private WeatherApi weatherApi;
 
     private static final long NETWORK_TIMEOUT_SECONDS = 30;
 
     @Inject
-    public NetworkService(HttpLoggingInterceptor loggingInterceptor,
-                          NetworkErrorInterceptor networkErrorInterceptor,
-                          Gson gson) {
+    public WeatherNetworkService(HttpLoggingInterceptor loggingInterceptor,
+                                 NetworkErrorInterceptor networkErrorInterceptor,
+                                 Gson gson) {
 
 
         OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder()
@@ -57,7 +58,7 @@ public class NetworkService implements ApiProvider {
     }
 
     private String getUrlWithKey() {
-        return BASE_URL + ApiConstans.WEATHER_API_KEY + "/";
+        return BASE_URL + WeatherApiConstans.WEATHER_API_KEY + "/";
     }
 
 
@@ -65,4 +66,5 @@ public class NetworkService implements ApiProvider {
     public WeatherApi getWeatherApi() {
         return weatherApi;
     }
+
 }

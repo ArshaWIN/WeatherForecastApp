@@ -1,8 +1,7 @@
 package com.mihailenko.ilya.weatherforecastapp.data.repositories;
 
-import com.mihailenko.ilya.weatherforecastapp.business.currentweather.ICurrentWeatherInteractor;
-import com.mihailenko.ilya.weatherforecastapp.data.models.Weather;
-import com.mihailenko.ilya.weatherforecastapp.network.WeatherApi;
+import com.mihailenko.ilya.weatherforecastapp.data.models.weather.Weather;
+import com.mihailenko.ilya.weatherforecastapp.network.weather.WeatherApi;
 
 import rx.Observable;
 

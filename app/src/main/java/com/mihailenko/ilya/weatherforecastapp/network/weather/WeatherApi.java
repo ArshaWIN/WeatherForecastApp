@@ -1,6 +1,6 @@
-package com.mihailenko.ilya.weatherforecastapp.network;
+package com.mihailenko.ilya.weatherforecastapp.network.weather;
 
-import com.mihailenko.ilya.weatherforecastapp.data.models.Weather;
+import com.mihailenko.ilya.weatherforecastapp.data.models.weather.Weather;
 
 
 import retrofit2.http.GET;
@@ -13,6 +13,6 @@ import rx.Observable;
 
 public interface WeatherApi {
 
-    @GET(ApiConstans.Route.FORECAST_FOR_CITY)
+    @GET(WeatherApiConstans.Route.FORECAST_FOR_CITY)
     Observable<Weather> getWeather(@Path("city") String city);
 }

@@ -15,7 +15,7 @@ import com.mihailenko.ilya.weatherforecastapp.common.MyLocationManager;
 import com.mihailenko.ilya.weatherforecastapp.data.repositories.CurrentWeatherRepository;
 import com.mihailenko.ilya.weatherforecastapp.data.repositories.ICurrentWeatherRepository;
 import com.mihailenko.ilya.weatherforecastapp.di.PerActivity;
-import com.mihailenko.ilya.weatherforecastapp.network.WeatherApi;
+import com.mihailenko.ilya.weatherforecastapp.network.weather.WeatherApi;
 import com.mihailenko.ilya.weatherforecastapp.ui.presenter.currentweather.CurrentWeatherPresenterImpl;
 import com.mihailenko.ilya.weatherforecastapp.ui.presenter.currentweather.CurrentWeatherPresenter;
 import com.mihailenko.ilya.weatherforecastapp.ui.view.currentweather.CurrentLocationWeatherActivity;

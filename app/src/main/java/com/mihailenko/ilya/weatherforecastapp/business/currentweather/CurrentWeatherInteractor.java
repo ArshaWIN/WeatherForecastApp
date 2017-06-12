@@ -1,10 +1,9 @@
 package com.mihailenko.ilya.weatherforecastapp.business.currentweather;
 
 import com.mihailenko.ilya.weatherforecastapp.data.item.ForecastDayItem;
-import com.mihailenko.ilya.weatherforecastapp.data.models.Weather;
+import com.mihailenko.ilya.weatherforecastapp.data.models.weather.Weather;
 import com.mihailenko.ilya.weatherforecastapp.data.repositories.ICurrentWeatherRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;

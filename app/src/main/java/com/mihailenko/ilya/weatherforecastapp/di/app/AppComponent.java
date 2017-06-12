@@ -5,7 +5,8 @@ import android.location.LocationManager;
 
 import com.mihailenko.ilya.weatherforecastapp.di.RestModule;
 import com.mihailenko.ilya.weatherforecastapp.interfaces.MessageShower;
-import com.mihailenko.ilya.weatherforecastapp.network.WeatherApi;
+import com.mihailenko.ilya.weatherforecastapp.network.places.GooglePlacesApi;
+import com.mihailenko.ilya.weatherforecastapp.network.weather.WeatherApi;
 
 import javax.inject.Singleton;
 
@@ -25,5 +26,7 @@ public interface AppComponent {
     WeatherApi provideWeatherApi();
 
     LocationManager provideLocationManager();
+
+    GooglePlacesApi providePlacesApi();
 
 }

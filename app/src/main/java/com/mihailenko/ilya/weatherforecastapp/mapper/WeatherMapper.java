@@ -7,8 +7,8 @@ import com.google.gson.JsonParseException;
 import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.TypeRef;
-import com.mihailenko.ilya.weatherforecastapp.data.models.Forecast;
-import com.mihailenko.ilya.weatherforecastapp.data.models.Weather;
+import com.mihailenko.ilya.weatherforecastapp.data.models.weather.Forecast;
+import com.mihailenko.ilya.weatherforecastapp.data.models.weather.Weather;
 
 import java.lang.reflect.Type;
 import java.util.List;

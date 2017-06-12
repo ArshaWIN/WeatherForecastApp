@@ -1,6 +1,6 @@
 package com.mihailenko.ilya.weatherforecastapp.data.repositories;
 
-import com.mihailenko.ilya.weatherforecastapp.data.models.Weather;
+import com.mihailenko.ilya.weatherforecastapp.data.models.weather.Weather;
 
 import rx.Observable;
 
