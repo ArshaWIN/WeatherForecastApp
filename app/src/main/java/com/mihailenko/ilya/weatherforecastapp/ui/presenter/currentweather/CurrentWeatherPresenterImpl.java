@@ -1,5 +1,6 @@
 package com.mihailenko.ilya.weatherforecastapp.ui.presenter.currentweather;
 
+import com.mihailenko.ilya.weatherforecastapp.business.currentweather.ICurrentWeatherInteractor;
 import com.mihailenko.ilya.weatherforecastapp.ui.view.currentweather.CurrentWeatherView;
 
 /**
@@ -8,7 +9,18 @@ import com.mihailenko.ilya.weatherforecastapp.ui.view.currentweather.CurrentWeat
 
 public class CurrentWeatherPresenterImpl extends CurrentWeatherPresenter {
 
-    public CurrentWeatherPresenterImpl(CurrentWeatherView view) {
+    private final ICurrentWeatherInteractor weatherInteractor;
+
+    public CurrentWeatherPresenterImpl(CurrentWeatherView view, ICurrentWeatherInteractor weatherInteractor) {
         super(view);
+        this.weatherInteractor = weatherInteractor;
+    }
+
+    @Override
+    public void getWeather(String city) {
+        addSubscription(weatherInteractor.getForecast(city)
+                .subscribe(forecastDayItems -> view.showForecast(forecastDayItems),
+                        Throwable::printStackTrace));
+
     }
 }

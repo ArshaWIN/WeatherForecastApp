@@ -1,21 +1,6 @@
 package com.mihailenko.ilya.weatherforecastapp.common;
 
 
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.location.Location;
-import android.location.LocationManager;
-import android.provider.Settings;
-import android.support.v4.content.LocalBroadcastManager;
-
-
-import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
-
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
 
 public class MyLocationManager {
 /*

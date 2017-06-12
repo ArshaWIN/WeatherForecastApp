@@ -1,5 +1,7 @@
 package com.mihailenko.ilya.weatherforecastapp.data.item;
 
+import com.mihailenko.ilya.weatherforecastapp.data.models.Forecast;
+
 /**
  * Created by Ilya on 12.06.2017.
  */
@@ -14,14 +16,14 @@ public class ForecastDayItem {
     public String iconUrl;
     public String windSpeed;
 
-    public ForecastDayItem(String day, String dayShort, String highTemperature, String lowTemperature, String humidity, String iconUrl, String windSpeed, String conditions) {
-        this.day = day;
-        this.dayShort = dayShort;
-        this.highTemperature = highTemperature;
-        this.lowTemperature = lowTemperature;
-        this.humidity = humidity;
-        this.iconUrl = iconUrl;
-        this.windSpeed = windSpeed;
-        this.conditions = conditions;
+    public ForecastDayItem(Forecast forecast) {
+        this.day = forecast.getDate().getWeekday();
+        this.dayShort = forecast.getDate().getShortWeekday();
+        this.highTemperature = forecast.getHighTemperature().getTemperature();
+        this.lowTemperature = forecast.getLowTemperature().getTemperature();
+        this.humidity = forecast.getHumidity();
+        this.iconUrl = forecast.getIconUrl();
+        this.windSpeed = forecast.getWind();
+        this.conditions = forecast.getConditions();
     }
 }

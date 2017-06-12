@@ -49,7 +49,7 @@ dependencies {
     // RX
     compile "io.reactivex:rxandroid:$rxAndroidVersion"
     compile "io.reactivex:rxjava:$rxJavaVersion"
-    compile 'pl.charmas.android:android-reactive-location:0.10@aar'
+//    compile 'pl.charmas.android:android-reactive-location:0.10@aar'
 
     //Network
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"

@@ -13,4 +13,12 @@ public class Date {
 
     @SerializedName("weekday_short")
     private String shortWeekday;
+
+    public String getWeekday() {
+        return weekday;
+    }
+
+    public String getShortWeekday() {
+        return shortWeekday;
+    }
 }

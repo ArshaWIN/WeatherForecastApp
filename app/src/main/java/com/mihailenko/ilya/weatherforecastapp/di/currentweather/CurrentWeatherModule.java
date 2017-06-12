@@ -4,7 +4,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.mihailenko.ilya.weatherforecastapp.adapter.ForecastAdapter;
+import com.mihailenko.ilya.weatherforecastapp.business.currentweather.CurrentWeatherInteractor;
+import com.mihailenko.ilya.weatherforecastapp.business.currentweather.ICurrentWeatherInteractor;
+import com.mihailenko.ilya.weatherforecastapp.data.repositories.CurrentWeatherRepository;
+import com.mihailenko.ilya.weatherforecastapp.data.repositories.ICurrentWeatherRepository;
 import com.mihailenko.ilya.weatherforecastapp.di.PerActivity;
+import com.mihailenko.ilya.weatherforecastapp.network.WeatherApi;
 import com.mihailenko.ilya.weatherforecastapp.ui.presenter.currentweather.CurrentWeatherPresenterImpl;
 import com.mihailenko.ilya.weatherforecastapp.ui.presenter.currentweather.CurrentWeatherPresenter;
 import com.mihailenko.ilya.weatherforecastapp.ui.view.currentweather.CurrentLocationWeatherActivity;
@@ -29,8 +34,8 @@ public class CurrentWeatherModule {
 
     @PerActivity
     @Provides
-    CurrentWeatherPresenter provideCurrentWeatherPresenter() {
-        return new CurrentWeatherPresenterImpl(activity);
+    CurrentWeatherPresenter provideCurrentWeatherPresenter(ICurrentWeatherInteractor weatherInteractor) {
+        return new CurrentWeatherPresenterImpl(activity,weatherInteractor);
     }
 
     @PerActivity
@@ -43,5 +48,17 @@ public class CurrentWeatherModule {
     @Provides
     RecyclerView.LayoutManager provideLayoutManager() {
         return new LinearLayoutManager(activity);
+    }
+
+    @PerActivity
+    @Provides
+    ICurrentWeatherRepository provideWeatherRepository(WeatherApi weatherApi) {
+        return new CurrentWeatherRepository(weatherApi);
+    }
+
+    @PerActivity
+    @Provides
+    ICurrentWeatherInteractor provideCurrentWeatherInteractor(ICurrentWeatherRepository weatherRepository) {
+        return new CurrentWeatherInteractor(weatherRepository);
     }
 }
