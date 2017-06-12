@@ -21,6 +21,8 @@ import java.util.List;
 
 public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ForecastViewHolder> {
     private static final int TYPE_HEADER = 0;
+    private static final int TYPE_NORMAL = 1;
+
 
     private List<ForecastDayItem> items;
     private LayoutInflater layoutInflater;
@@ -45,6 +47,11 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
                 DataBindingUtil.inflate(layoutInflater, R.layout.item_day_forecast, parent, false);
         return new ForecastDay(binding.getRoot());
 
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position == 0 ? TYPE_HEADER : TYPE_NORMAL;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.mihailenko.ilya.weatherforecastapp.di.app;
 
 import android.content.Context;
+import android.location.LocationManager;
 
 import com.mihailenko.ilya.weatherforecastapp.di.RestModule;
 import com.mihailenko.ilya.weatherforecastapp.interfaces.MessageShower;

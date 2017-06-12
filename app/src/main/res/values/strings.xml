@@ -3,4 +3,5 @@
     <string name="current_weather">Current weather</string>
     <string name="search_city">Search city</string>
     <string name="error_network">Internet connection problem... please, check internet and try again</string>
+    <string name="choose_mode">Choose a mode</string>
 </resources>

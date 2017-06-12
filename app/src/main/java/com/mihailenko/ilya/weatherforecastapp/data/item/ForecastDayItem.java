@@ -23,7 +23,7 @@ public class ForecastDayItem {
         this.lowTemperature = forecast.getLowTemperature().getTemperature();
         this.humidity = forecast.getHumidity();
         this.iconUrl = forecast.getIconUrl();
-        this.windSpeed = forecast.getWind();
+        this.windSpeed = forecast.getWind().getSpeed();
         this.conditions = forecast.getConditions();
     }
 }

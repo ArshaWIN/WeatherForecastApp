@@ -1,11 +1,12 @@
 package com.mihailenko.ilya.weatherforecastapp.di;
 
 
-
-
 import android.content.Context;
+import android.location.LocationManager;
 
 import com.mihailenko.ilya.weatherforecastapp.ui.view.base.BaseActivity;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -24,5 +25,11 @@ public class ActivityModule {
     @Provides
     Context provideContext() {
         return activity;
+    }
+
+    @Provides
+    @Singleton
+    LocationManager provideLocationManager() {
+        return (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
     }
 }

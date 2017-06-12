@@ -1,6 +1,5 @@
 package com.mihailenko.ilya.weatherforecastapp.data.models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

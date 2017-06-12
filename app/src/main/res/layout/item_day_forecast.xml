@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text='@{String.format("Humidity: %s %", forecast.humidity)}'
+            android:text='@{String.format("Humidity: %s%%", forecast.humidity)}'
             android:layout_toEndOf="@id/line2"
             tools:text="humidity 25 %" />
 

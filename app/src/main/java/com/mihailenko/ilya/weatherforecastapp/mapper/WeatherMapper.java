@@ -43,7 +43,7 @@ public class WeatherMapper implements JsonDeserializer<Weather> {
         List<Forecast> forecasts = JsonPath
                 .using(mConfiguration)
                 .parse(json)
-                .read("$..forecastday[0:7]", mListForecastType);
+                .read("$..simpleforecast.forecastday[0:7]", mListForecastType);
         weather.setForecasts(forecasts);
 
         return weather;

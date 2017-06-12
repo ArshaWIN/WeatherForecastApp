@@ -27,7 +27,7 @@ public class Forecast {
     private String iconUrl;
 
     @SerializedName("avewind")
-    private String wind;
+    private Wind wind;
 
     public String getConditions() {
         return conditions;
@@ -53,7 +53,7 @@ public class Forecast {
         return iconUrl;
     }
 
-    public String getWind() {
+    public Wind getWind() {
         return wind;
     }
 }

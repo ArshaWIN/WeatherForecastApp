@@ -2,6 +2,7 @@ package com.mihailenko.ilya.weatherforecastapp.di.app;
 
 import android.app.Application;
 import android.content.Context;
+import android.location.LocationManager;
 import android.support.annotation.NonNull;
 
 import com.mihailenko.ilya.weatherforecastapp.common.ToastMessageShower;

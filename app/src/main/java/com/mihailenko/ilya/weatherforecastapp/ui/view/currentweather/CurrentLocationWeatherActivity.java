@@ -16,6 +16,7 @@ import com.mihailenko.ilya.weatherforecastapp.di.currentweather.CurrentWeatherMo
 import com.mihailenko.ilya.weatherforecastapp.di.currentweather.DaggerCurrentWeatherComponent;
 import com.mihailenko.ilya.weatherforecastapp.ui.presenter.currentweather.CurrentWeatherPresenter;
 import com.mihailenko.ilya.weatherforecastapp.ui.view.base.BaseActivity;
+import com.mihailenko.ilya.weatherforecastapp.ui.view.base.ToolbarActivity;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ import javax.inject.Inject;
  * Created by Ilya on 12.06.2017.
  */
 
-public class CurrentLocationWeatherActivity extends BaseActivity<ActivityCurrentWeatherBinding, CurrentWeatherPresenter>
+public class CurrentLocationWeatherActivity extends ToolbarActivity<ActivityCurrentWeatherBinding, CurrentWeatherPresenter>
         implements CurrentWeatherView {
 
     @Inject
@@ -53,7 +54,13 @@ public class CurrentLocationWeatherActivity extends BaseActivity<ActivityCurrent
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         createAdapter();
-        setupActionBar();
+
+        presenter.getWeather("Krasnodar");
+    }
+
+    @Override
+    protected int getToolbarTitle() {
+        return R.string.current_weather;
     }
 
     private void createAdapter() {
@@ -77,11 +84,5 @@ public class CurrentLocationWeatherActivity extends BaseActivity<ActivityCurrent
         forecastAdapter.setForecast(forecastDayItems);
     }
 
-    private void setupActionBar() {
-        setSupportActionBar(binding.toolbar.toolbar);
-        ActionBar supportActionBar = getSupportActionBar();
-        if (supportActionBar != null) {
-            supportActionBar.setTitle(R.string.current_weather);
-        }
-    }
+
 }

@@ -2,6 +2,7 @@ package com.mihailenko.ilya.weatherforecastapp.di;
 
 
 import android.content.Context;
+import android.location.LocationManager;
 
 import com.mihailenko.ilya.weatherforecastapp.di.app.AppComponent;
 import com.mihailenko.ilya.weatherforecastapp.interfaces.MessageShower;
@@ -19,5 +20,7 @@ public interface ActivityComponent {
     MessageShower provideToastMessageShower();
 
     WeatherApi provideWeatherApi();
+
+    LocationManager provideLocationManager();
 
 }

@@ -3,6 +3,7 @@ package com.mihailenko.ilya.weatherforecastapp.ui.view.main;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,15 @@ public class MainActivity extends AppCompatActivity implements ChooseActivityVie
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setViewModel(this);
+        setupActionBar();
+    }
+
+    private void setupActionBar() {
+        setSupportActionBar(binding.toolbar.toolbar);
+        ActionBar supportActionBar = getSupportActionBar();
+        if (supportActionBar != null) {
+            supportActionBar.setTitle(R.string.choose_mode);
+        }
     }
 
     @Override
