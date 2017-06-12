@@ -9,4 +9,6 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="never_ask_gps">This mode cannot work without GPS. Please, enable it</string>
+    <string name="search_hint">Search...</string>
+    <string name="find_city">Find your city</string>
 </resources>

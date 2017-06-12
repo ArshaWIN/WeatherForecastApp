@@ -7,6 +7,7 @@ import com.mihailenko.ilya.weatherforecastapp.business.currentweather.ICurrentWe
 import com.mihailenko.ilya.weatherforecastapp.common.MyLocationManager;
 import com.mihailenko.ilya.weatherforecastapp.interfaces.LocationListener;
 import com.mihailenko.ilya.weatherforecastapp.ui.view.currentweather.CurrentWeatherView;
+import com.mihailenko.ilya.weatherforecastapp.utils.rx.RxSchedulers;
 
 import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
@@ -36,9 +37,9 @@ public class CurrentWeatherPresenterImpl extends CurrentWeatherPresenter
 
     private void getWeather(String city) {
         addSubscription(weatherInteractor.getForecast(city)
-                .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxSchedulers.getIOToMainTransformer())
                 .subscribe(forecastDayItems -> view.showForecast(forecastDayItems),
-                        Throwable::printStackTrace));
+                        view::showMessage));
     }
 
     @Override

@@ -8,4 +8,8 @@ import java.util.List;
 
 public class Place {
     private List<String> suggestions;
+
+    public List<String> getSuggestions() {
+        return suggestions;
+    }
 }
