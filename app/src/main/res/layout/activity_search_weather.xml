@@ -2,6 +2,15 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="hasData"
+            type="boolean" />
+
+        <import type="android.view.View" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -12,12 +21,31 @@
             layout="@layout/toolbar" />
 
         <AutoCompleteTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/autocomplete_cities"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
             android:hint="@string/search_hint"
             tools:background="@color/colorPrimaryDark" />
         <!--        android:minWidth="@dimen/view_width_big"
                 android:textColor="@color/light_gray"
                 android:textColorHint="@color/gray"-->
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/weather_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{hasData ? View.VISIBLE : View.GONE}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/find_city"
+            android:textSize="32sp"
+            android:visibility="@{hasData ? View.GONE : View.VISIBLE}" />
     </LinearLayout>
+
+
 </layout>

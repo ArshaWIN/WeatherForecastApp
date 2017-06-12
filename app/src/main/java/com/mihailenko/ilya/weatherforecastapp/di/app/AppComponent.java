@@ -25,8 +25,6 @@ public interface AppComponent {
 
     WeatherApi provideWeatherApi();
 
-    LocationManager provideLocationManager();
-
     GooglePlacesApi providePlacesApi();
 
 }

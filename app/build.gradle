@@ -23,6 +23,10 @@ android {
         enabled = true
     }
 
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -49,7 +53,6 @@ dependencies {
     // RX
     compile "io.reactivex:rxandroid:$rxAndroidVersion"
     compile "io.reactivex:rxjava:$rxJavaVersion"
-//    compile 'pl.charmas.android:android-reactive-location:0.10@aar'
 
     //Network
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
@@ -64,6 +67,10 @@ dependencies {
     // Permission dispatcher
     compile "com.github.hotchemi:permissionsdispatcher:${permissionDispatcherVersion}"
     annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:${permissionDispatcherVersion}"
+
+    // location
+    compile 'com.google.android.gms:play-services-location:11.0.0'
+    compile 'pl.charmas.android:android-reactive-location:0.10@aar'
 
     compile 'com.jakewharton.timber:timber:4.5.1'
     compile 'com.github.bumptech.glide:glide:3.8.0'

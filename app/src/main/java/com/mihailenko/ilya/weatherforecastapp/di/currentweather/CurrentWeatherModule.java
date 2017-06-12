@@ -12,8 +12,8 @@ import com.mihailenko.ilya.weatherforecastapp.adapter.ForecastAdapter;
 import com.mihailenko.ilya.weatherforecastapp.business.currentweather.CurrentWeatherInteractor;
 import com.mihailenko.ilya.weatherforecastapp.business.currentweather.ICurrentWeatherInteractor;
 import com.mihailenko.ilya.weatherforecastapp.common.MyLocationManager;
-import com.mihailenko.ilya.weatherforecastapp.data.repositories.CurrentWeatherRepository;
-import com.mihailenko.ilya.weatherforecastapp.data.repositories.ICurrentWeatherRepository;
+import com.mihailenko.ilya.weatherforecastapp.data.repositories.weather.IWeatherForecastRepository;
+import com.mihailenko.ilya.weatherforecastapp.data.repositories.weather.WeatherForecastForecastRepository;
 import com.mihailenko.ilya.weatherforecastapp.di.PerActivity;
 import com.mihailenko.ilya.weatherforecastapp.network.weather.WeatherApi;
 import com.mihailenko.ilya.weatherforecastapp.ui.presenter.currentweather.CurrentWeatherPresenterImpl;
@@ -42,8 +42,8 @@ public class CurrentWeatherModule {
 
     @PerActivity
     @Provides
-    MyLocationManager provideMyLocationManager(LocationManager locationManager) {
-        return new MyLocationManager(activity, locationManager);
+    MyLocationManager provideMyLocationManager() {
+        return new MyLocationManager(activity);
     }
 
     @PerActivity
@@ -66,13 +66,13 @@ public class CurrentWeatherModule {
 
     @PerActivity
     @Provides
-    ICurrentWeatherRepository provideWeatherRepository(WeatherApi weatherApi) {
-        return new CurrentWeatherRepository(weatherApi);
+    IWeatherForecastRepository provideWeatherRepository(WeatherApi weatherApi) {
+        return new WeatherForecastForecastRepository(weatherApi);
     }
 
     @PerActivity
     @Provides
-    ICurrentWeatherInteractor provideCurrentWeatherInteractor(ICurrentWeatherRepository weatherRepository) {
+    ICurrentWeatherInteractor provideCurrentWeatherInteractor(IWeatherForecastRepository weatherRepository) {
         return new CurrentWeatherInteractor(weatherRepository);
     }
 

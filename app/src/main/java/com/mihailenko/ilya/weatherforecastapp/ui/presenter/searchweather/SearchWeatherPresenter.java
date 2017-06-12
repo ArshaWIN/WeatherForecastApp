@@ -12,4 +12,7 @@ public abstract class SearchWeatherPresenter extends BasePresenter<SearchWeather
     public SearchWeatherPresenter(SearchWeatherView view) {
         super(view);
     }
+
+
+    public abstract void onCitySelected(String city);
 }

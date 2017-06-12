@@ -31,34 +31,40 @@ public class CurrentWeatherPresenterImpl extends CurrentWeatherPresenter
 
     @Override
     public void needWeather() {
+        view.onStartProgress();
         myLocationManager.needLocation(this);
-
     }
 
     private void getWeather(String city) {
         addSubscription(weatherInteractor.getForecast(city)
                 .compose(RxSchedulers.getIOToMainTransformer())
+                .doOnSubscribe(view::onStartProgress)
+                .doAfterTerminate(view::onEndProgress)
                 .subscribe(forecastDayItems -> view.showForecast(forecastDayItems),
                         view::showMessage));
     }
 
     @Override
     public void onLocationGet(Location location) {
+        view.onEndProgress();
         Timber.d("Get location %s", location);
     }
 
     @Override
     public void onGPSDisabled() {
+        view.onEndProgress();
         view.onGPSDisabled();
     }
 
     @Override
     public void onPermissionNeed() {
+        view.onEndProgress();
         view.onPermissionNeed();
     }
 
     @Override
     public void onGPSError() {
+        view.onEndProgress();
         view.showGPSError(R.string.error_location);
     }
 }

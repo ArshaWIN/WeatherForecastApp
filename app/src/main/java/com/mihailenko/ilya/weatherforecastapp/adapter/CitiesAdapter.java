@@ -9,7 +9,8 @@ import android.widget.Filter;
 
 import com.mihailenko.ilya.weatherforecastapp.R;
 import com.mihailenko.ilya.weatherforecastapp.data.models.places.Place;
-import com.mihailenko.ilya.weatherforecastapp.network.places.GooglePlacesApi;
+import com.mihailenko.ilya.weatherforecastapp.data.repositories.places.IGooglePlaceRepository;
+
 import com.mihailenko.ilya.weatherforecastapp.utils.rx.RxSchedulers;
 
 import java.util.Collections;
@@ -18,15 +19,16 @@ import java.util.List;
 
 import timber.log.Timber;
 
+
 public class CitiesAdapter extends ArrayAdapter<String> {
-    private final GooglePlacesApi placesApi;
     private List<String> cities;
+    private final IGooglePlaceRepository placeRepository;
 
 
-    public CitiesAdapter(Context context, GooglePlacesApi api) {
+    public CitiesAdapter(Context context, IGooglePlaceRepository googlePlaceRepository) {
         super(context, R.layout.item_city);
+        this.placeRepository = googlePlaceRepository;
         cities = Collections.emptyList();
-        placesApi = api;
     }
 
     @Override
@@ -46,7 +48,7 @@ public class CitiesAdapter extends ArrayAdapter<String> {
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence charSequence) {
-                if (charSequence != null) {
+                if (null != charSequence) {
                     updateCities(charSequence.toString());
                 }
                 return null;
@@ -59,13 +61,13 @@ public class CitiesAdapter extends ArrayAdapter<String> {
     }
 
     private void updateCities(String input) {
-        placesApi.getCitiesSuggestions(input)
+        placeRepository.getSuggestions(input)
                 .map(Place::getSuggestions)
                 .compose(RxSchedulers.getIOToMainTransformer())
                 .subscribe(suggestions -> {
                     cities = suggestions;
                     notifyDataSetChanged();
-                }, throwable -> Timber.e(throwable, "Can't get cities"));
+                }, throwable -> Timber.e(throwable, "Can't load cities"));
     }
 
 }

@@ -39,9 +39,4 @@ public class AppModule {
         return new ToastMessageShower(appContext);
     }
 
-    @Provides
-    @Singleton
-    LocationManager provideLocationManager() {
-        return (LocationManager) appContext.getSystemService(Context.LOCATION_SERVICE);
-    }
 }

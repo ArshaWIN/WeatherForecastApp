@@ -9,7 +9,9 @@ import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.spi.json.GsonJsonProvider;
 import com.jayway.jsonpath.spi.mapper.GsonMappingProvider;
 import com.mihailenko.ilya.weatherforecastapp.BuildConfig;
+import com.mihailenko.ilya.weatherforecastapp.data.models.places.Place;
 import com.mihailenko.ilya.weatherforecastapp.data.models.weather.Weather;
+import com.mihailenko.ilya.weatherforecastapp.mapper.PlacesMapper;
 import com.mihailenko.ilya.weatherforecastapp.mapper.WeatherMapper;
 import com.mihailenko.ilya.weatherforecastapp.network.places.GooglePlacesApi;
 import com.mihailenko.ilya.weatherforecastapp.network.places.GooglePlacesNetworkService;
@@ -67,9 +69,10 @@ public class RestModule {
 
     @Singleton
     @Provides
-    Gson provideGson(WeatherMapper weatherMapper) {
+    Gson provideGson(WeatherMapper weatherMapper, PlacesMapper placesMapper) {
         return new GsonBuilder()
                 .registerTypeAdapter(Weather.class, weatherMapper)
+                .registerTypeAdapter(Place.class, placesMapper)
                 .create();
     }
 

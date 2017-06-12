@@ -23,8 +23,6 @@ public interface ActivityComponent {
 
     WeatherApi provideWeatherApi();
 
-    LocationManager provideLocationManager();
-
     LoadingIndicator provideLoadingIndicator();
 
     GooglePlacesApi providePlacesApi();

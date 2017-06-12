@@ -2,7 +2,7 @@ package com.mihailenko.ilya.weatherforecastapp.business.currentweather;
 
 import com.mihailenko.ilya.weatherforecastapp.data.item.ForecastDayItem;
 import com.mihailenko.ilya.weatherforecastapp.data.models.weather.Weather;
-import com.mihailenko.ilya.weatherforecastapp.data.repositories.ICurrentWeatherRepository;
+import com.mihailenko.ilya.weatherforecastapp.data.repositories.weather.IWeatherForecastRepository;
 
 import java.util.List;
 
@@ -14,9 +14,9 @@ import rx.Observable;
 
 public class CurrentWeatherInteractor implements ICurrentWeatherInteractor {
 
-    private final ICurrentWeatherRepository weatherRepository;
+    private final IWeatherForecastRepository weatherRepository;
 
-    public CurrentWeatherInteractor(ICurrentWeatherRepository weatherRepository) {
+    public CurrentWeatherInteractor(IWeatherForecastRepository weatherRepository) {
         this.weatherRepository = weatherRepository;
     }
 

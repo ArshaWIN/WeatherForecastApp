@@ -43,8 +43,6 @@ public class CurrentLocationWeatherActivity extends ToolbarActivity<ActivityCurr
     @Inject
     RecyclerView.LayoutManager layoutManager;
     @Inject
-    LoadingIndicator loadingIndicator;
-    @Inject
     @Named("GPS_DIALOG")
     MaterialDialog gpsDialog;
 
@@ -68,6 +66,8 @@ public class CurrentLocationWeatherActivity extends ToolbarActivity<ActivityCurr
         super.onCreate(savedInstanceState);
         createAdapter();
 
+        binding.setHasData(false);
+        binding.swipeRefreshLayout.setOnRefreshListener(() -> CurrentLocationWeatherActivityPermissionsDispatcher.needWeatherWithCheck(this));
         CurrentLocationWeatherActivityPermissionsDispatcher.needWeatherWithCheck(this);
     }
 
@@ -93,8 +93,8 @@ public class CurrentLocationWeatherActivity extends ToolbarActivity<ActivityCurr
 
     @Override
     public void onGPSDisabled() {
-        showGPSError(R.string.gps_disable_text);
-    }
+        gpsDialog.show();
+}
 
     @Override
     public void onPermissionNeed() {
@@ -137,15 +137,16 @@ public class CurrentLocationWeatherActivity extends ToolbarActivity<ActivityCurr
     @Override
     public void showForecast(List<ForecastDayItem> forecastDayItems) {
         forecastAdapter.setForecast(forecastDayItems);
+        binding.setHasData(!forecastDayItems.isEmpty());
     }
 
     @Override
     public void onStartProgress() {
-        loadingIndicator.show();
+        binding.swipeRefreshLayout.setRefreshing(true);
     }
 
     @Override
     public void onEndProgress() {
-        loadingIndicator.dismiss();
+        binding.swipeRefreshLayout.setRefreshing(false);
     }
 }
