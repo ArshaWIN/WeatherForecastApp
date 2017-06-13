@@ -28,17 +28,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/image_current_weather"
                 android:gravity="center"
                 android:onClick="@{viewModel.onCurrentWeatherClick}"
-                android:text="@string/current_weather" />
+                android:shadowColor="@color/colorWhite"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/current_weather"
+                android:textSize="36sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/image_search_weather"
                 android:gravity="center"
                 android:onClick="@{viewModel.onSearchCityClickClick}"
-                android:text="@string/search_city" />
+                android:shadowColor="@color/text_shadow"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/search_city"
+                android:textColor="@color/colorWhite"
+                android:textSize="36sp" />
 
         </LinearLayout>
 
