@@ -14,6 +14,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
         android:orientation="vertical">
 
         <include
@@ -26,10 +27,9 @@
             android:layout_height="48dp"
             android:gravity="center"
             android:hint="@string/search_hint"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite70"
             tools:background="@color/colorPrimaryDark" />
-        <!--        android:minWidth="@dimen/view_width_big"
-                android:textColor="@color/light_gray"
-                android:textColorHint="@color/gray"-->
 
 
         <android.support.v7.widget.RecyclerView

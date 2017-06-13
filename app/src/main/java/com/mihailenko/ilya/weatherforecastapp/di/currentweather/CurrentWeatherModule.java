@@ -19,6 +19,7 @@ import com.mihailenko.ilya.weatherforecastapp.network.weather.WeatherApi;
 import com.mihailenko.ilya.weatherforecastapp.ui.presenter.currentweather.CurrentWeatherPresenterImpl;
 import com.mihailenko.ilya.weatherforecastapp.ui.presenter.currentweather.CurrentWeatherPresenter;
 import com.mihailenko.ilya.weatherforecastapp.ui.view.currentweather.CurrentLocationWeatherActivity;
+import com.mihailenko.ilya.weatherforecastapp.widget.ItemDivider;
 
 import java.util.Collections;
 
@@ -57,6 +58,12 @@ public class CurrentWeatherModule {
     @Provides
     CurrentWeatherPresenter provideCurrentWeatherPresenter(ICurrentWeatherInteractor weatherInteractor, MyLocationManager myLocationManager, ReactiveLocationProvider reactiveLocationProvider) {
         return new CurrentWeatherPresenterImpl(activity, weatherInteractor, myLocationManager, reactiveLocationProvider);
+    }
+
+    @PerActivity
+    @Provides
+    ItemDivider provideItemDivider() {
+        return new ItemDivider(activity, R.drawable.item_divider);
     }
 
     @PerActivity

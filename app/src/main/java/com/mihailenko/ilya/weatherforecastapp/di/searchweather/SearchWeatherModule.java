@@ -4,6 +4,7 @@ package com.mihailenko.ilya.weatherforecastapp.di.searchweather;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.mihailenko.ilya.weatherforecastapp.R;
 import com.mihailenko.ilya.weatherforecastapp.adapter.CitiesAdapter;
 
 import com.mihailenko.ilya.weatherforecastapp.adapter.ForecastAdapter;
@@ -20,6 +21,7 @@ import com.mihailenko.ilya.weatherforecastapp.network.weather.WeatherApi;
 import com.mihailenko.ilya.weatherforecastapp.ui.presenter.searchweather.SearchWeatherPresenter;
 import com.mihailenko.ilya.weatherforecastapp.ui.presenter.searchweather.SearchWeatherPresenterImpl;
 import com.mihailenko.ilya.weatherforecastapp.ui.view.searchweather.SearchWeatherActivity;
+import com.mihailenko.ilya.weatherforecastapp.widget.ItemDivider;
 
 import java.util.Collections;
 
@@ -47,6 +49,12 @@ public class SearchWeatherModule {
     @Provides
     CitiesAdapter provideCitiesAdapter(IGooglePlaceRepository googlePlaceRepository) {
         return new CitiesAdapter(searchWeatherActivity, googlePlaceRepository);
+    }
+
+    @PerActivity
+    @Provides
+    ItemDivider provideItemDivider() {
+        return new ItemDivider(searchWeatherActivity, R.drawable.item_divider);
     }
 
     @PerActivity

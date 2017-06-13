@@ -18,6 +18,7 @@ import com.mihailenko.ilya.weatherforecastapp.di.currentweather.CurrentWeatherMo
 import com.mihailenko.ilya.weatherforecastapp.di.currentweather.DaggerCurrentWeatherComponent;
 import com.mihailenko.ilya.weatherforecastapp.ui.presenter.currentweather.CurrentWeatherPresenter;
 import com.mihailenko.ilya.weatherforecastapp.ui.view.base.ToolbarActivity;
+import com.mihailenko.ilya.weatherforecastapp.widget.ItemDivider;
 import com.mihailenko.ilya.weatherforecastapp.widget.LoadingIndicator;
 
 import java.util.List;
@@ -45,6 +46,8 @@ public class CurrentLocationWeatherActivity extends ToolbarActivity<ActivityCurr
     @Inject
     @Named("GPS_DIALOG")
     MaterialDialog gpsDialog;
+    @Inject
+    ItemDivider itemDivider;
 
 
     public static void start(Context context) {
@@ -94,7 +97,7 @@ public class CurrentLocationWeatherActivity extends ToolbarActivity<ActivityCurr
     @Override
     public void onGPSDisabled() {
         gpsDialog.show();
-}
+    }
 
     @Override
     public void onPermissionNeed() {
@@ -119,8 +122,9 @@ public class CurrentLocationWeatherActivity extends ToolbarActivity<ActivityCurr
 
 
     private void createAdapter() {
-        binding.weatherList.setAdapter(forecastAdapter);
         binding.weatherList.setLayoutManager(layoutManager);
+        binding.weatherList.addItemDecoration(itemDivider);
+        binding.weatherList.setAdapter(forecastAdapter);
     }
 
     @Override
