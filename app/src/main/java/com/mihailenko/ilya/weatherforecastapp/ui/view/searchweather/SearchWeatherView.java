@@ -14,4 +14,6 @@ import java.util.List;
 public interface SearchWeatherView extends BaseView, HasProgressIndication, CanShowMessage {
     void showForecast(List<ForecastDayItem> forecastDayItems);
 
+    void setToolbarTittle(int title);
+
 }

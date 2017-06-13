@@ -13,5 +13,6 @@
     <string name="find_city">Find your city...</string>
     <string name="need_refresh">"Can't get current location. Pull to refresh and try again"</string>
     <string name="unexpected_error">Unexpected error</string>
+    <string name="error_forecast">Forecast not found</string>
 
 </resources>
