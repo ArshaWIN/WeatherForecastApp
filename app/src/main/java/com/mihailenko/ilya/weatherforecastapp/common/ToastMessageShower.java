@@ -5,6 +5,8 @@ import android.support.annotation.StringRes;
 import android.widget.Toast;
 
 
+import com.mihailenko.ilya.weatherforecastapp.R;
+import com.mihailenko.ilya.weatherforecastapp.interfaces.HasLocalizedMessage;
 import com.mihailenko.ilya.weatherforecastapp.interfaces.MessageShower;
 
 
@@ -32,7 +34,11 @@ public class ToastMessageShower implements MessageShower {
 
     @Override
     public void showMessage(Throwable throwable) {
-            showMessage(throwable.getLocalizedMessage());
+        if (throwable instanceof HasLocalizedMessage) {
+            showMessage(((HasLocalizedMessage) throwable).getMessage(context));
+            return;
+        }
+        showMessage(R.string.unexpected_error);
     }
 
 }

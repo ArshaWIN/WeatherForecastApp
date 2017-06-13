@@ -4,6 +4,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.mihailenko.ilya.weatherforecastapp.R;
 import com.mihailenko.ilya.weatherforecastapp.utils.StringUtils;
 
 import java.util.Locale;
@@ -19,8 +20,7 @@ public class BindingAdapter {
 
         Glide.with(imageView.getContext())
                 .load(icon)
-//                .placeholder(R.drawable.forecast_placeholder)
-//                .error(R.drawable.forecast_error)
+                .placeholder(R.drawable.ic_umbrella)
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(imageView);
     }

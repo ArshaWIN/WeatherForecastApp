@@ -8,9 +8,11 @@ import android.widget.Filter;
 
 
 import com.mihailenko.ilya.weatherforecastapp.R;
+import com.mihailenko.ilya.weatherforecastapp.common.ToastMessageShower;
 import com.mihailenko.ilya.weatherforecastapp.data.models.places.Place;
 import com.mihailenko.ilya.weatherforecastapp.data.repositories.places.IGooglePlaceRepository;
 
+import com.mihailenko.ilya.weatherforecastapp.interfaces.MessageShower;
 import com.mihailenko.ilya.weatherforecastapp.utils.rx.RxSchedulers;
 
 import java.util.Collections;
@@ -23,11 +25,13 @@ import timber.log.Timber;
 public class CitiesAdapter extends ArrayAdapter<String> {
     private List<String> cities;
     private final IGooglePlaceRepository placeRepository;
+    private final MessageShower toastMessageShower;
 
 
-    public CitiesAdapter(Context context, IGooglePlaceRepository googlePlaceRepository) {
+    public CitiesAdapter(Context context, IGooglePlaceRepository googlePlaceRepository, MessageShower toastMessageShower) {
         super(context, R.layout.item_city);
         this.placeRepository = googlePlaceRepository;
+        this.toastMessageShower = toastMessageShower;
         cities = Collections.emptyList();
     }
 
@@ -67,7 +71,7 @@ public class CitiesAdapter extends ArrayAdapter<String> {
                 .subscribe(suggestions -> {
                     cities = suggestions;
                     notifyDataSetChanged();
-                }, throwable -> Timber.e(throwable, "Can't load cities"));
+                }, toastMessageShower::showMessage);
     }
 
 }

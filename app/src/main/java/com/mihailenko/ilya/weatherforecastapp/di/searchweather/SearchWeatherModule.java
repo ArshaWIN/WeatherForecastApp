@@ -11,11 +11,13 @@ import com.mihailenko.ilya.weatherforecastapp.adapter.ForecastAdapter;
 import com.mihailenko.ilya.weatherforecastapp.business.currentweather.CurrentWeatherInteractor;
 import com.mihailenko.ilya.weatherforecastapp.business.currentweather.ICurrentWeatherInteractor;
 
+import com.mihailenko.ilya.weatherforecastapp.common.ToastMessageShower;
 import com.mihailenko.ilya.weatherforecastapp.data.repositories.places.GooglePlaceRepository;
 import com.mihailenko.ilya.weatherforecastapp.data.repositories.places.IGooglePlaceRepository;
 import com.mihailenko.ilya.weatherforecastapp.data.repositories.weather.IWeatherForecastRepository;
 import com.mihailenko.ilya.weatherforecastapp.data.repositories.weather.WeatherForecastForecastRepository;
 import com.mihailenko.ilya.weatherforecastapp.di.PerActivity;
+import com.mihailenko.ilya.weatherforecastapp.interfaces.MessageShower;
 import com.mihailenko.ilya.weatherforecastapp.network.places.GooglePlacesApi;
 import com.mihailenko.ilya.weatherforecastapp.network.weather.WeatherApi;
 import com.mihailenko.ilya.weatherforecastapp.ui.presenter.searchweather.SearchWeatherPresenter;
@@ -47,8 +49,8 @@ public class SearchWeatherModule {
 
     @PerActivity
     @Provides
-    CitiesAdapter provideCitiesAdapter(IGooglePlaceRepository googlePlaceRepository) {
-        return new CitiesAdapter(searchWeatherActivity, googlePlaceRepository);
+    CitiesAdapter provideCitiesAdapter(IGooglePlaceRepository googlePlaceRepository, MessageShower toastMessageShower) {
+        return new CitiesAdapter(searchWeatherActivity, googlePlaceRepository, toastMessageShower);
     }
 
     @PerActivity

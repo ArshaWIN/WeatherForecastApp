@@ -50,12 +50,12 @@ public class CurrentWeatherPresenterImpl extends CurrentWeatherPresenter
     public void onLocationGet(Location location) {
         Timber.d("Get location %s", location);
 
-        reactiveLocationProvider.getReverseGeocodeObservable(location.getLatitude(), location.getLongitude(), 1)
+        addSubscription(reactiveLocationProvider.getReverseGeocodeObservable(location.getLatitude(), location.getLongitude(), 1)
                 .compose(RxSchedulers.getIOToMainTransformer())
                 .map(addresses -> addresses.get(0))
                 .doOnSubscribe(view::onStartProgress)
                 .doAfterTerminate(view::onEndProgress)
-                .subscribe(address -> onCityRecognized(address.getLocality()), Throwable::printStackTrace);
+                .subscribe(address -> onCityRecognized(address.getLocality()), view::showMessage));
     }
 
     private void onCityRecognized(String city) {
