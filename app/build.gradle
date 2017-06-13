@@ -14,11 +14,30 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
         }
     }
 
+    productFlavors {
+
+        dev {
+            applicationIdSuffix '.dev'
+            buildConfigField 'String', 'SERVER_URL', '"http://api.wunderground.com/api/"'
+            resValue 'string', 'app_name', 'Weather forecast dev'
+        }
+
+        prod {
+            buildConfigField 'String', 'SERVER_URL', '"http://api.wunderground.com/api/"'
+            resValue 'string', 'app_name', 'Weather forecast'
+        }
+
+    }
     dataBinding {
         enabled = true
     }

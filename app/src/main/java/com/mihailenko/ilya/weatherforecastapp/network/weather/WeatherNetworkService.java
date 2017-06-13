@@ -1,6 +1,7 @@
 package com.mihailenko.ilya.weatherforecastapp.network.weather;
 
 import com.google.gson.Gson;
+import com.mihailenko.ilya.weatherforecastapp.BuildConfig;
 import com.mihailenko.ilya.weatherforecastapp.network.interceptors.NetworkErrorInterceptor;
 import com.mihailenko.ilya.weatherforecastapp.network.interceptors.QueryInterceptor;
 import com.mihailenko.ilya.weatherforecastapp.network.places.GooglePlacesApi;
@@ -25,7 +26,7 @@ import rx.schedulers.Schedulers;
  */
 @Singleton
 public class WeatherNetworkService implements WeatherApiProvider {
-    private static final String BASE_URL = WeatherApiConstans.BASE_URL;
+    private static final String BASE_URL = BuildConfig.SERVER_URL;
 
     private WeatherApi weatherApi;
 
