@@ -75,16 +75,12 @@ public class SearchWeatherActivity extends ToolbarActivity<ActivitySearchWeather
         binding.setHasData(false);
         createAdapter();
         setupAutoComplete();
-
-
     }
 
     private void setupAutoComplete() {
         binding.autocompleteCities.setAdapter(citiesAdapter);
         binding.autocompleteCities.setThreshold(1);
-        binding.autocompleteCities.setOnItemClickListener((parent, view, position, id) -> {
-            onCitySelected(citiesAdapter.getItem(position));
-        });
+        binding.autocompleteCities.setOnItemClickListener((parent, view, position, id) -> onCitySelected(citiesAdapter.getItem(position)));
     }
 
     private void onCitySelected(String city) {

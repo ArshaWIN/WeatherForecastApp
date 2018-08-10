@@ -11,10 +11,10 @@ import okhttp3.Interceptor;
 import okhttp3.Response;
 
 public class NetworkErrorInterceptor implements Interceptor {
-    private final ConnectivityManager mConnectivityManager;
+    private final ConnectivityManager connectivityManager;
 
     public NetworkErrorInterceptor(ConnectivityManager connectivityManager) {
-        mConnectivityManager = connectivityManager;
+        this.connectivityManager = connectivityManager;
     }
 
     @Override
@@ -26,7 +26,7 @@ public class NetworkErrorInterceptor implements Interceptor {
     }
 
     private boolean isNetworkEnabled() {
-        final NetworkInfo networkInfo = mConnectivityManager.getActiveNetworkInfo();
+        final NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isConnected();
     }
 
