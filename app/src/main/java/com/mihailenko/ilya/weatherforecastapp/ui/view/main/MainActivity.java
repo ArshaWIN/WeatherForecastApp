@@ -13,7 +13,7 @@ import com.mihailenko.ilya.weatherforecastapp.databinding.ActivityMainBinding;
 import com.mihailenko.ilya.weatherforecastapp.ui.view.currentweather.CurrentLocationWeatherActivity;
 import com.mihailenko.ilya.weatherforecastapp.ui.view.searchweather.SearchWeatherActivity;
 
-public class MainActivity extends AppCompatActivity implements ChooseActivityViewModel {
+public class MainActivity extends AppCompatActivity implements ChooseActivityClickListener {
 
     private ActivityMainBinding binding;
 

@@ -6,9 +6,8 @@ import android.view.View;
  * Created by Ilya on 11.06.2017.
  */
 
-public interface ChooseActivityViewModel {
+public interface ChooseActivityClickListener {
     void onCurrentWeatherClick(View view);
 
     void onSearchCityClickClick(View view);
-
 }

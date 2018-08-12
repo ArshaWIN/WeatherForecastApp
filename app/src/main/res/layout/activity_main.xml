@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.mihailenko.ilya.weatherforecastapp.ui.view.main.ChooseActivityViewModel" />
+            type="com.mihailenko.ilya.weatherforecastapp.ui.view.main.ChooseActivityClickListener" />
     </data>
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -17,43 +18,38 @@
             android:id="@+id/toolbar"
             layout="@layout/toolbar" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/tvCurrentWeather"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/toolbar"
-            android:orientation="vertical"
-            android:weightSum="2">
+            android:layout_height="0dp"
+            android:background="@drawable/image_current_weather"
+            android:gravity="center"
+            android:onClick="@{viewModel.onCurrentWeatherClick}"
+            android:shadowColor="@color/colorWhite"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
+            android:text="@string/current_weather"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toTopOf="@+id/tvSearchWeather"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/image_current_weather"
-                android:gravity="center"
-                android:onClick="@{viewModel.onCurrentWeatherClick}"
-                android:shadowColor="@color/colorWhite"
-                android:shadowDx="1"
-                android:shadowDy="1"
-                android:shadowRadius="2"
-                android:text="@string/current_weather"
-                android:textSize="36sp" />
+        <TextView
+            android:id="@+id/tvSearchWeather"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/image_search_weather"
+            android:gravity="center"
+            android:onClick="@{viewModel.onSearchCityClickClick}"
+            android:shadowColor="@color/text_shadow"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
+            android:text="@string/search_city"
+            android:textColor="@color/colorWhite"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCurrentWeather" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/image_search_weather"
-                android:gravity="center"
-                android:onClick="@{viewModel.onSearchCityClickClick}"
-                android:shadowColor="@color/text_shadow"
-                android:shadowDx="1"
-                android:shadowDy="1"
-                android:shadowRadius="2"
-                android:text="@string/search_city"
-                android:textColor="@color/colorWhite"
-                android:textSize="36sp" />
-
-        </LinearLayout>
-
-    </RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
 </layout>

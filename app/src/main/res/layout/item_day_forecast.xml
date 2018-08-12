@@ -10,76 +10,71 @@
             type="com.mihailenko.ilya.weatherforecastapp.data.item.ForecastDayItem" />
     </data>
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:background="@color/colorPrimary"
-        android:gravity="center_vertical"
         android:padding="8dp">
 
-
-        <LinearLayout
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
 
-            <TextView
-                android:id="@+id/day"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text='@{String.format("%s, %s %s", forecast.dayOfWeek,forecast.month,forecast.day)}'
-                android:textColor="@color/colorWhite70"
-                android:textSize="16sp"
-                tools:text="Sunday" />
-
-            <TextView
-                android:id="@+id/conditions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{forecast.conditions}"
-                android:textColor="@color/colorWhite70"
-                android:textSize="14sp"
-                tools:text="Rainy" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/temperature_container"
+        <TextView
+            android:id="@+id/day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="8dp"
-            android:orientation="vertical">
+            android:text='@{String.format("%s, %s %s", forecast.dayOfWeek,forecast.month,forecast.day)}'
+            android:textColor="@color/colorWhite70"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Sunday" />
 
-            <TextView
-                android:id="@+id/temperature_to"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text='@{String.format("%s\u2103", forecast.highTemperature)}'
-                android:textColor="@color/colorWhite"
-                android:textSize="16sp"
-                tools:text="29 C" />
+        <TextView
+            android:id="@+id/conditions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{forecast.conditions}"
+            android:textColor="@color/colorWhite70"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guideline"
+            tools:text="Rainy" />
 
-            <TextView
-                android:id="@+id/temperature_from"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text='@{String.format("%s\u2103", forecast.lowTemperature)}'
-                android:textColor="@color/colorWhite70"
-                tools:text="24 C" />
+        <TextView
+            android:id="@+id/temperature_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{String.format("%s\u2103", forecast.highTemperature)}'
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="29 C" />
 
-        </LinearLayout>
-
+        <TextView
+            android:id="@+id/temperature_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{String.format("%s\u2103", forecast.lowTemperature)}'
+            android:textColor="@color/colorWhite70"
+            app:layout_constraintStart_toStartOf="@+id/temperature_to"
+            app:layout_constraintTop_toBottomOf="@+id/guideline"
+            tools:text="24 C" />
 
         <ImageView
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_marginEnd="24dp"
-            android:layout_toStartOf="@+id/temperature_container"
             app:imageUrl="@{forecast.iconUrl}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/temperature_to"
+            app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_umbrella" />
 
-    </RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
 </layout>

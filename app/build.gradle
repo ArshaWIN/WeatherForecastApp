@@ -58,6 +58,7 @@ final rxAndroidVersion = '2.0.2'
 final retrofitVersion = '2.4.0'
 final supportVersion = '25.3.1'
 final permissionDispatcherVersion = '2.4.0'
+final constraintLayoutVersion = '1.1.2'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -69,6 +70,7 @@ dependencies {
     compile "com.android.support:appcompat-v7:$supportVersion"
     compile "com.android.support:cardview-v7:$supportVersion"
     compile "com.android.support:recyclerview-v7:$supportVersion"
+    compile "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
 
     // RX
     compile "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"

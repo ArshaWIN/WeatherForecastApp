@@ -10,7 +10,7 @@
             type="com.mihailenko.ilya.weatherforecastapp.data.item.ForecastDayItem" />
     </data>
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
@@ -21,54 +21,28 @@
             android:id="@+id/current_weather_icon"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_centerInParent="true"
             android:layout_marginBottom="4dp"
             android:layout_marginTop="4dp"
             android:padding="16dp"
             app:imageUrl="@{forecast.iconUrl}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_umbrella" />
 
         <TextView
             android:id="@+id/weather_condition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/current_weather_icon"
-            android:layout_centerHorizontal="true"
             android:text="@{forecast.conditions}"
             android:textColor="@color/colorWhite70"
             android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/current_weather_icon"
             tools:text="Cloudly" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toStartOf="@+id/current_weather_icon"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/high_temperature"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text='@{String.format("%s\u2103", forecast.highTemperature)}'
-                android:textColor="@color/colorWhite"
-                android:textSize="32sp"
-                tools:text="25 C" />
-
-            <TextView
-                android:id="@+id/low_temperature"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
-                android:layout_marginTop="8dp"
-                android:text='@{String.format("%s\u2103", forecast.lowTemperature)}'
-                android:textColor="@color/colorWhite70"
-                android:textSize="28sp"
-                tools:text="18 C" />
-        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -77,35 +51,71 @@
             android:text='@{String.format("Today, %s %s", forecast.month,forecast.day)}'
             android:textColor="@color/colorWhite70"
             android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/current_weather_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Rainy" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+
+        <TextView
+            android:id="@+id/high_temperature"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/current_weather_icon"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_marginBottom="8dp"
+            android:text='@{String.format("%s\u2103", forecast.highTemperature)}'
+            android:textColor="@color/colorWhite"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toStartOf="@+id/current_weather_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="25 C" />
 
-            <TextView
-                android:id="@+id/humidity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:text='@{String.format("Humidity: %s%%", forecast.humidity)}'
-                android:textColor="@color/colorWhite70"
-                android:textSize="16sp"
-                tools:text="humidity 87 %" />
+        <TextView
+            android:id="@+id/low_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text='@{String.format("%s\u2103", forecast.lowTemperature)}'
+            android:textColor="@color/colorWhite70"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toStartOf="@+id/current_weather_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guideline"
+            tools:text="18 C" />
 
-            <TextView
-                android:id="@+id/wind"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text='@{String.format("Wind: %s kph", forecast.windSpeed)}'
-                android:textColor="@color/colorWhite70"
-                android:textSize="16sp"
-                tools:text="average wind 23" />
-        </LinearLayout>
-    </RelativeLayout>
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <TextView
+            android:id="@+id/humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:text='@{String.format("Humidity: %s%%", forecast.humidity)}'
+            android:textColor="@color/colorWhite70"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/current_weather_icon"
+            tools:text="humidity 87 %" />
+
+        <TextView
+            android:id="@+id/wind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text='@{String.format("Wind: %s kph", forecast.windSpeed)}'
+            android:textColor="@color/colorWhite70"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/current_weather_icon"
+            app:layout_constraintTop_toBottomOf="@+id/guideline"
+            tools:text="average wind 23" />
+
+    </android.support.constraint.ConstraintLayout>
 </layout>

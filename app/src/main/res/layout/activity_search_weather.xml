@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -11,41 +12,46 @@
         <import type="android.view.View" />
     </data>
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
-        android:orientation="vertical">
+        android:background="@color/colorPrimary">
 
         <include
             android:id="@+id/toolbar"
             layout="@layout/toolbar" />
 
         <AutoCompleteTextView
-            android:id="@+id/autocomplete_cities"
+            android:id="@+id/autocompleteCities"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:gravity="center"
             android:hint="@string/search_hint"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhite70"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
             tools:background="@color/colorPrimaryDark" />
 
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/weather_list"
+            android:id="@+id/weatherList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="@{hasData ? View.VISIBLE : View.GONE}" />
+            android:layout_height="wrap_content"
+            android:visibility="@{hasData ? View.VISIBLE : View.GONE}"
+            app:layout_constraintTop_toBottomOf="@+id/autocompleteCities" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
+            android:id="@+id/tvCityHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/find_city"
             android:textSize="32sp"
-            android:visibility="@{hasData ? View.GONE : View.VISIBLE}" />
-    </LinearLayout>
+            android:visibility="@{hasData ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/toolbar"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
 
 
 </layout>
