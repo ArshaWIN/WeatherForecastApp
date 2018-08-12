@@ -7,33 +7,33 @@ import com.mihailenko.ilya.weatherforecastapp.errors.ForecastNotFoundThrowable;
 
 import java.util.List;
 
-import rx.Observable;
+import io.reactivex.Observable;
+import io.reactivex.Single;
 
 /**
  * Created by Ilya on 12.06.2017.
  */
 
-public class CurrentWeatherInteractor implements ICurrentWeatherInteractor {
+public class CurrentWeatherInteractorImpl implements ICurrentWeatherInteractor {
 
     private final IWeatherForecastRepository weatherRepository;
 
-    public CurrentWeatherInteractor(IWeatherForecastRepository weatherRepository) {
+    public CurrentWeatherInteractorImpl(IWeatherForecastRepository weatherRepository) {
         this.weatherRepository = weatherRepository;
     }
 
     @Override
-    public Observable<List<ForecastDayItem>> getForecast(String city) {
-        return weatherRepository.getWeather(city)
+    public Single<List<ForecastDayItem>> getForecast(String city) {
+        return weatherRepository.getWeatherByCity(city)
                 .map(Weather::getForecasts)
-                .flatMap(Observable::from)
+                .flatMapObservable(Observable::fromIterable)
                 .map(ForecastDayItem::new)
                 .toList()
                 .flatMap(forecastDayItems -> {
                     if (forecastDayItems.isEmpty()) {
-                        return Observable.error(new ForecastNotFoundThrowable());
-                    } else {
-                        return Observable.just(forecastDayItems);
+                        return Single.error(new ForecastNotFoundThrowable());
                     }
+                    return Single.just(forecastDayItems);
                 });
     }
 }

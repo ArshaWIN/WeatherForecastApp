@@ -19,7 +19,6 @@ import com.mihailenko.ilya.weatherforecastapp.di.currentweather.DaggerCurrentWea
 import com.mihailenko.ilya.weatherforecastapp.ui.presenter.currentweather.CurrentWeatherPresenter;
 import com.mihailenko.ilya.weatherforecastapp.ui.view.base.ToolbarActivity;
 import com.mihailenko.ilya.weatherforecastapp.widget.ItemDivider;
-import com.mihailenko.ilya.weatherforecastapp.widget.LoadingIndicator;
 
 import java.util.List;
 

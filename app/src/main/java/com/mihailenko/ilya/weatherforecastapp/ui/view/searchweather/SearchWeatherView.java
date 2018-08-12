@@ -16,4 +16,5 @@ public interface SearchWeatherView extends BaseView, HasProgressIndication, CanS
 
     void setToolbarTittle(int title);
 
+    void showCitySuggestions(List<String> cities);
 }

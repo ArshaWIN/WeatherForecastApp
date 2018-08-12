@@ -2,7 +2,7 @@ package com.mihailenko.ilya.weatherforecastapp.data.repositories.weather;
 
 import com.mihailenko.ilya.weatherforecastapp.data.models.weather.Weather;
 
-import rx.Observable;
+import io.reactivex.Single;
 
 
 /**
@@ -10,5 +10,5 @@ import rx.Observable;
  */
 
 public interface IWeatherForecastRepository {
-    Observable<Weather> getWeather(String city);
+    Single<Weather> getWeatherByCity(String city);
 }

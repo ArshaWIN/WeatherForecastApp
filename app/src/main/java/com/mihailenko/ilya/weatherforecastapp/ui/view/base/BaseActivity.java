@@ -18,10 +18,8 @@ import com.mihailenko.ilya.weatherforecastapp.ui.presenter.base.BasePresenter;
 
 import javax.inject.Inject;
 
-import rx.Observable;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 /**
  * Created by Ilya on 11.06.2017.
@@ -32,7 +30,6 @@ public abstract class BaseActivity<TBinding extends ViewDataBinding, TPresenter 
 
     protected TBinding binding;
     private ActivityComponent activityComponent;
-    private CompositeSubscription compositeSubscription;
 
     @Inject
     MessageShower messageShower;
@@ -69,20 +66,6 @@ public abstract class BaseActivity<TBinding extends ViewDataBinding, TPresenter 
 
     public abstract void buildActivityComponentAndInject();
 
-    final protected void addSubscription(Subscription subscription) {
-        if (compositeSubscription == null || compositeSubscription.isUnsubscribed()) {
-            compositeSubscription = new CompositeSubscription();
-        }
-        compositeSubscription.add(subscription);
-    }
-
-    private void unsubscribeComposite() {
-        if (compositeSubscription != null && compositeSubscription.hasSubscriptions()) {
-            compositeSubscription.unsubscribe();
-            compositeSubscription = null;
-        }
-    }
-
     protected abstract TBinding inflateBinding();
 
 
@@ -91,14 +74,11 @@ public abstract class BaseActivity<TBinding extends ViewDataBinding, TPresenter 
         if (getPresenter() != null) {
             getPresenter().onStop();
         }
-        unsubscribeComposite();
-
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
-
         if (getPresenter() != null) {
             getPresenter().onDestroy();
         }

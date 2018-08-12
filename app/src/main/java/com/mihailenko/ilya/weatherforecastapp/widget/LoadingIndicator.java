@@ -20,12 +20,7 @@ import java.util.TimerTask;
 public class LoadingIndicator extends Dialog {
     private static final int DELAY_SHOW = 300;
     private static final int DELAY_DISMISS = 600;
-    private final Runnable dismissRunnable = new Runnable() {
-        @Override
-        public void run() {
-            LoadingIndicator.super.dismiss();
-        }
-    };
+    private final Runnable dismissRunnable = LoadingIndicator.super::dismiss;
     private final Activity activity;
     private int loadingIndicatorCounter = 0;
     private boolean isDismissed = true;

@@ -3,22 +3,23 @@ package com.mihailenko.ilya.weatherforecastapp.data.repositories.weather;
 import com.mihailenko.ilya.weatherforecastapp.data.models.weather.Weather;
 import com.mihailenko.ilya.weatherforecastapp.network.weather.WeatherApi;
 
-import rx.Observable;
+import io.reactivex.Single;
+
 
 /**
  * Created by Ilya on 12.06.2017.
  */
 
-public class WeatherForecastForecastRepository implements IWeatherForecastRepository {
+public class WeatherForecastRepositoryImpl implements IWeatherForecastRepository {
 
     private final WeatherApi weatherApi;
 
-    public WeatherForecastForecastRepository(WeatherApi weatherApi) {
+    public WeatherForecastRepositoryImpl(WeatherApi weatherApi) {
         this.weatherApi = weatherApi;
     }
 
     @Override
-    public Observable<Weather> getWeather(String city) {
+    public Single<Weather> getWeatherByCity(String city) {
         return weatherApi.getWeather(city);
     }
 }

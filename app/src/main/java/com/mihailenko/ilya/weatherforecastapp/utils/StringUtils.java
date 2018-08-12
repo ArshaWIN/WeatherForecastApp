@@ -5,6 +5,9 @@ package com.mihailenko.ilya.weatherforecastapp.utils;
  */
 
 public class StringUtils {
+
+    public static final String EMPTY_STRING = "";
+
     public static boolean isEmpty(String s) {
         return s == null || s.isEmpty();
     }

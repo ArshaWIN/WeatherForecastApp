@@ -2,9 +2,9 @@ package com.mihailenko.ilya.weatherforecastapp.network.places;
 
 import com.mihailenko.ilya.weatherforecastapp.data.models.places.Place;
 
+import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-import rx.Observable;
 
 /**
  * Created by Ilya on 12.06.2017.
@@ -12,5 +12,5 @@ import rx.Observable;
 
 public interface GooglePlacesApi {
     @GET(GooglePlacesApiConstans.Route.PLACE)
-    Observable<Place> getCitiesSuggestions(@Query("input") String city);
+    Single<Place> getCitiesSuggestions(@Query("input") String city);
 }

@@ -4,7 +4,7 @@ import com.mihailenko.ilya.weatherforecastapp.data.item.ForecastDayItem;
 
 import java.util.List;
 
-import rx.Observable;
+import io.reactivex.Single;
 
 
 /**
@@ -12,5 +12,5 @@ import rx.Observable;
  */
 
 public interface ICurrentWeatherInteractor {
-    Observable<List<ForecastDayItem>> getForecast(String city);
+    Single<List<ForecastDayItem>> getForecast(String city);
 }

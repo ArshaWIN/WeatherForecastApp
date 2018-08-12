@@ -4,8 +4,8 @@ import android.support.annotation.CallSuper;
 
 import com.mihailenko.ilya.weatherforecastapp.ui.view.base.BaseView;
 
-import rx.Subscription;
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 /**
  * Created by Ilya on 11.06.2017.
@@ -13,7 +13,7 @@ import rx.subscriptions.CompositeSubscription;
 
 public abstract class BasePresenter<TView extends BaseView> {
     protected TView view;
-    private CompositeSubscription compositeSubscription;
+    private CompositeDisposable compositeSubscription;
 
 
     public BasePresenter(TView view) {
@@ -27,7 +27,7 @@ public abstract class BasePresenter<TView extends BaseView> {
 
     @CallSuper
     public void onDestroy() {
-        unsubscribeComposite();
+        clearDisposables();
     }
 
     @SuppressWarnings("EmptyMethod")
@@ -42,23 +42,20 @@ public abstract class BasePresenter<TView extends BaseView> {
     @SuppressWarnings("EmptyMethod")
     @CallSuper
     public void onStop() {
-        unsubscribeComposite();
+        clearDisposables();
     }
 
 
-    final protected void addSubscription(Subscription subscription) {
-        if (compositeSubscription == null || compositeSubscription.isUnsubscribed()) {
-            compositeSubscription = new CompositeSubscription();
+    final protected void addDisposable(Disposable disposable) {
+        if (compositeSubscription == null) {
+            compositeSubscription = new CompositeDisposable();
         }
-        compositeSubscription.add(subscription);
+        compositeSubscription.add(disposable);
     }
 
-    private void unsubscribeComposite() {
-        if (compositeSubscription != null && compositeSubscription.hasSubscriptions()) {
-            compositeSubscription.unsubscribe();
-            compositeSubscription = null;
+    private void clearDisposables() {
+        if (compositeSubscription != null) {
+            compositeSubscription.clear();
         }
     }
-
-
 }

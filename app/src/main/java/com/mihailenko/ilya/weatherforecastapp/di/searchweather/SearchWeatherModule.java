@@ -6,22 +6,19 @@ import android.support.v7.widget.RecyclerView;
 
 import com.mihailenko.ilya.weatherforecastapp.R;
 import com.mihailenko.ilya.weatherforecastapp.adapter.CitiesAdapter;
-
 import com.mihailenko.ilya.weatherforecastapp.adapter.ForecastAdapter;
-import com.mihailenko.ilya.weatherforecastapp.business.currentweather.CurrentWeatherInteractor;
+import com.mihailenko.ilya.weatherforecastapp.business.currentweather.CurrentWeatherInteractorImpl;
 import com.mihailenko.ilya.weatherforecastapp.business.currentweather.ICurrentWeatherInteractor;
-
-import com.mihailenko.ilya.weatherforecastapp.common.ToastMessageShower;
-import com.mihailenko.ilya.weatherforecastapp.data.repositories.places.GooglePlaceRepository;
+import com.mihailenko.ilya.weatherforecastapp.business.searchweather.SearchWeatherInteractor;
+import com.mihailenko.ilya.weatherforecastapp.business.searchweather.SearchWeatherInteractorImpl;
+import com.mihailenko.ilya.weatherforecastapp.data.repositories.places.GooglePlaceRepositoryImpl;
 import com.mihailenko.ilya.weatherforecastapp.data.repositories.places.IGooglePlaceRepository;
 import com.mihailenko.ilya.weatherforecastapp.data.repositories.weather.IWeatherForecastRepository;
-import com.mihailenko.ilya.weatherforecastapp.data.repositories.weather.WeatherForecastForecastRepository;
+import com.mihailenko.ilya.weatherforecastapp.data.repositories.weather.WeatherForecastRepositoryImpl;
 import com.mihailenko.ilya.weatherforecastapp.di.PerActivity;
-import com.mihailenko.ilya.weatherforecastapp.interfaces.MessageShower;
 import com.mihailenko.ilya.weatherforecastapp.network.places.GooglePlacesApi;
 import com.mihailenko.ilya.weatherforecastapp.network.weather.WeatherApi;
 import com.mihailenko.ilya.weatherforecastapp.ui.presenter.searchweather.SearchWeatherPresenter;
-import com.mihailenko.ilya.weatherforecastapp.ui.presenter.searchweather.SearchWeatherPresenterImpl;
 import com.mihailenko.ilya.weatherforecastapp.ui.view.searchweather.SearchWeatherActivity;
 import com.mihailenko.ilya.weatherforecastapp.widget.ItemDivider;
 
@@ -43,14 +40,14 @@ public class SearchWeatherModule {
 
     @PerActivity
     @Provides
-    SearchWeatherPresenter provideSearchWeatherPresenter(ICurrentWeatherInteractor currentWeatherInteractor) {
-        return new SearchWeatherPresenterImpl(searchWeatherActivity, currentWeatherInteractor);
+    SearchWeatherPresenter provideSearchWeatherPresenter(ICurrentWeatherInteractor currentWeatherInteractor, SearchWeatherInteractor searchWeatherInteractor) {
+        return new SearchWeatherPresenter(searchWeatherActivity, currentWeatherInteractor, searchWeatherInteractor);
     }
 
     @PerActivity
     @Provides
-    CitiesAdapter provideCitiesAdapter(IGooglePlaceRepository googlePlaceRepository, MessageShower toastMessageShower) {
-        return new CitiesAdapter(searchWeatherActivity, googlePlaceRepository, toastMessageShower);
+    CitiesAdapter provideCitiesAdapter() {
+        return new CitiesAdapter(searchWeatherActivity, searchWeatherActivity);
     }
 
     @PerActivity
@@ -62,20 +59,27 @@ public class SearchWeatherModule {
     @PerActivity
     @Provides
     IWeatherForecastRepository provideWeatherRepository(WeatherApi weatherApi) {
-        return new WeatherForecastForecastRepository(weatherApi);
+        return new WeatherForecastRepositoryImpl(weatherApi);
     }
 
     @PerActivity
     @Provides
     ICurrentWeatherInteractor provideCurrentWeatherInteractor(IWeatherForecastRepository weatherRepository) {
-        return new CurrentWeatherInteractor(weatherRepository);
+        return new CurrentWeatherInteractorImpl(weatherRepository);
+    }
+
+
+    @PerActivity
+    @Provides
+    SearchWeatherInteractor provideSearchWeatherInteractor(IGooglePlaceRepository googlePlaceRepository) {
+        return new SearchWeatherInteractorImpl(googlePlaceRepository);
     }
 
 
     @PerActivity
     @Provides
     IGooglePlaceRepository provideGooglePlaceRepository(GooglePlacesApi placesApi) {
-        return new GooglePlaceRepository(placesApi);
+        return new GooglePlaceRepositoryImpl(placesApi);
     }
 
     @PerActivity

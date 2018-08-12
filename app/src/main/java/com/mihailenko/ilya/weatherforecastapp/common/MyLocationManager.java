@@ -4,16 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
-import android.os.Bundle;
 
 import com.google.android.gms.location.LocationRequest;
-import com.mihailenko.ilya.weatherforecastapp.R;
 import com.mihailenko.ilya.weatherforecastapp.interfaces.LocationListener;
 import com.mihailenko.ilya.weatherforecastapp.utils.CheckPermissionUtils;
 
-import pl.charmas.android.reactivelocation.ReactiveLocationProvider;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import pl.charmas.android.reactivelocation2.ReactiveLocationProvider;
 
 /**
  * Created by Ilya on 12.06.2017.
