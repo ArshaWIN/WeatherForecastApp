@@ -9,7 +9,7 @@ import io.reactivex.Single;
  * Created by Ilya on 12.06.2017.
  */
 
-public interface SearchWeatherInteractor {
+public interface GooglePlaceInteractor {
     Single<List<String>> findSuggestions(String input);
 
 }

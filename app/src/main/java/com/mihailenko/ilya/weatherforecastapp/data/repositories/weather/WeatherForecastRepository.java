@@ -9,6 +9,6 @@ import io.reactivex.Single;
  * Created by Ilya on 12.06.2017.
  */
 
-public interface IWeatherForecastRepository {
+public interface WeatherForecastRepository {
     Single<Weather> getWeatherByCity(String city);
 }

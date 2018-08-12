@@ -23,13 +23,14 @@ import javax.inject.Singleton;
 @Singleton
 public class WeatherMapper implements JsonDeserializer<Weather> {
 
-    private final Configuration mConfiguration;
-    private final TypeRef<List<Forecast>> mListForecastType;
+    private static final String WEEK = "$..simpleforecast.forecastday[0:7]";
+    private final Configuration configuration;
+    private final TypeRef<List<Forecast>> listForecastType;
 
     @Inject
     public WeatherMapper(Configuration configuration) {
-        mConfiguration = configuration;
-        mListForecastType = new TypeRef<List<Forecast>>() {
+        this.configuration = configuration;
+        listForecastType = new TypeRef<List<Forecast>>() {
         };
     }
 
@@ -41,9 +42,10 @@ public class WeatherMapper implements JsonDeserializer<Weather> {
         final Weather weather = new Weather();
 
         List<Forecast> forecasts = JsonPath
-                .using(mConfiguration)
+                .using(configuration)
                 .parse(json)
-                .read("$..simpleforecast.forecastday[0:7]", mListForecastType);
+                .read(WEEK, listForecastType);
+
         weather.setForecasts(forecasts);
 
         return weather;

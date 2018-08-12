@@ -8,13 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.mihailenko.ilya.weatherforecastapp.R;
 import com.mihailenko.ilya.weatherforecastapp.adapter.ForecastAdapter;
-import com.mihailenko.ilya.weatherforecastapp.business.currentweather.CurrentWeatherInteractorImpl;
-import com.mihailenko.ilya.weatherforecastapp.business.currentweather.ICurrentWeatherInteractor;
+import com.mihailenko.ilya.weatherforecastapp.business.currentweather.WeatherInteractor;
 import com.mihailenko.ilya.weatherforecastapp.common.MyLocationManager;
-import com.mihailenko.ilya.weatherforecastapp.data.repositories.weather.IWeatherForecastRepository;
-import com.mihailenko.ilya.weatherforecastapp.data.repositories.weather.WeatherForecastRepositoryImpl;
 import com.mihailenko.ilya.weatherforecastapp.di.PerActivity;
-import com.mihailenko.ilya.weatherforecastapp.network.weather.WeatherApi;
 import com.mihailenko.ilya.weatherforecastapp.ui.presenter.currentweather.CurrentWeatherPresenter;
 import com.mihailenko.ilya.weatherforecastapp.ui.view.currentweather.CurrentLocationWeatherActivity;
 import com.mihailenko.ilya.weatherforecastapp.widget.ItemDivider;
@@ -54,7 +50,7 @@ public class CurrentWeatherModule {
 
     @PerActivity
     @Provides
-    CurrentWeatherPresenter provideCurrentWeatherPresenter(ICurrentWeatherInteractor weatherInteractor, MyLocationManager myLocationManager, ReactiveLocationProvider reactiveLocationProvider) {
+    CurrentWeatherPresenter provideCurrentWeatherPresenter(WeatherInteractor weatherInteractor, MyLocationManager myLocationManager, ReactiveLocationProvider reactiveLocationProvider) {
         return new CurrentWeatherPresenter(activity, weatherInteractor, myLocationManager, reactiveLocationProvider);
     }
 
@@ -74,18 +70,6 @@ public class CurrentWeatherModule {
     @Provides
     RecyclerView.LayoutManager provideLayoutManager() {
         return new LinearLayoutManager(activity);
-    }
-
-    @PerActivity
-    @Provides
-    IWeatherForecastRepository provideWeatherRepository(WeatherApi weatherApi) {
-        return new WeatherForecastRepositoryImpl(weatherApi);
-    }
-
-    @PerActivity
-    @Provides
-    ICurrentWeatherInteractor provideCurrentWeatherInteractor(IWeatherForecastRepository weatherRepository) {
-        return new CurrentWeatherInteractorImpl(weatherRepository);
     }
 
     @PerActivity

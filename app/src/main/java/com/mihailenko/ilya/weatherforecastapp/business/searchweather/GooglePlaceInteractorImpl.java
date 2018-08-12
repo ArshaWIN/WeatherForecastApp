@@ -1,6 +1,6 @@
 package com.mihailenko.ilya.weatherforecastapp.business.searchweather;
 
-import com.mihailenko.ilya.weatherforecastapp.data.repositories.places.IGooglePlaceRepository;
+import com.mihailenko.ilya.weatherforecastapp.data.repositories.places.GooglePlaceRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +12,10 @@ import io.reactivex.Single;
  * Created by Ilya on 12.06.2017.
  */
 
-public class SearchWeatherInteractorImpl implements SearchWeatherInteractor {
-    private final IGooglePlaceRepository googlePlaceRepository;
+public class GooglePlaceInteractorImpl implements GooglePlaceInteractor {
+    private final GooglePlaceRepository googlePlaceRepository;
 
-    public SearchWeatherInteractorImpl(IGooglePlaceRepository googlePlaceRepository) {
+    public GooglePlaceInteractorImpl(GooglePlaceRepository googlePlaceRepository) {
         this.googlePlaceRepository = googlePlaceRepository;
     }
 

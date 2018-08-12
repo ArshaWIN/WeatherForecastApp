@@ -10,7 +10,7 @@ import io.reactivex.Single;
  * Created by Ilya on 12.06.2017.
  */
 
-public class WeatherForecastRepositoryImpl implements IWeatherForecastRepository {
+public class WeatherForecastRepositoryImpl implements WeatherForecastRepository {
 
     private final WeatherApi weatherApi;
 

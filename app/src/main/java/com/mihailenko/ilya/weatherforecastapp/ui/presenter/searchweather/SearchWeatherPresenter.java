@@ -1,9 +1,8 @@
 package com.mihailenko.ilya.weatherforecastapp.ui.presenter.searchweather;
 
 import com.mihailenko.ilya.weatherforecastapp.R;
-import com.mihailenko.ilya.weatherforecastapp.business.currentweather.ICurrentWeatherInteractor;
-import com.mihailenko.ilya.weatherforecastapp.business.searchweather.SearchWeatherInteractor;
-import com.mihailenko.ilya.weatherforecastapp.interfaces.MessageShower;
+import com.mihailenko.ilya.weatherforecastapp.business.currentweather.WeatherInteractor;
+import com.mihailenko.ilya.weatherforecastapp.business.searchweather.GooglePlaceInteractor;
 import com.mihailenko.ilya.weatherforecastapp.ui.presenter.base.BasePresenter;
 import com.mihailenko.ilya.weatherforecastapp.ui.view.searchweather.SearchWeatherView;
 import com.mihailenko.ilya.weatherforecastapp.utils.rx.RxSchedulers;
@@ -16,16 +15,16 @@ import java.util.Collections;
 
 public class SearchWeatherPresenter extends BasePresenter<SearchWeatherView> {
 
-    private final ICurrentWeatherInteractor currentWeatherInteractor;
-    private final SearchWeatherInteractor searchWeatherInteractor;
+    private final WeatherInteractor currentWeatherInteractor;
+    private final GooglePlaceInteractor googlePlaceInteractor;
 
     public SearchWeatherPresenter(SearchWeatherView view,
-                                  ICurrentWeatherInteractor currentWeatherInteractor,
-                                  SearchWeatherInteractor searchWeatherInteractor) {
+                                  WeatherInteractor currentWeatherInteractor,
+                                  GooglePlaceInteractor googlePlaceInteractor) {
         super(view);
 
         this.currentWeatherInteractor = currentWeatherInteractor;
-        this.searchWeatherInteractor = searchWeatherInteractor;
+        this.googlePlaceInteractor = googlePlaceInteractor;
     }
 
     public void onCitySelected(String city) {
@@ -41,7 +40,7 @@ public class SearchWeatherPresenter extends BasePresenter<SearchWeatherView> {
     }
 
     public void onSearchCitySuggestions(String input) {
-        addDisposable(searchWeatherInteractor.findSuggestions(input)
+        addDisposable(googlePlaceInteractor.findSuggestions(input)
                 .compose(RxSchedulers.applySingleAsync())
                 .subscribe(view::showCitySuggestions, view::showMessage)
         );

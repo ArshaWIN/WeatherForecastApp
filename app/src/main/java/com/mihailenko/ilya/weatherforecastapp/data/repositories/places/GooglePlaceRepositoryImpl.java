@@ -9,7 +9,7 @@ import io.reactivex.Single;
  * Created by Ilya on 12.06.2017.
  */
 
-public class GooglePlaceRepositoryImpl implements IGooglePlaceRepository {
+public class GooglePlaceRepositoryImpl implements GooglePlaceRepository {
 
     private final GooglePlacesApi placesApi;
 

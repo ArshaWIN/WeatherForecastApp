@@ -11,7 +11,7 @@ import dagger.Component;
  */
 
 @PerActivity
-@Component(dependencies = {ActivityComponent.class}, modules = {CurrentWeatherModule.class})
+@Component(dependencies = {ActivityComponent.class}, modules = {CurrentWeatherModule.class, WeatherModule.class})
 public interface CurrentWeatherComponent {
 
     void inject(CurrentLocationWeatherActivity currentLocationWeatherActivity);

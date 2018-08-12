@@ -3,7 +3,7 @@ package com.mihailenko.ilya.weatherforecastapp.ui.presenter.currentweather;
 import android.location.Location;
 
 import com.mihailenko.ilya.weatherforecastapp.R;
-import com.mihailenko.ilya.weatherforecastapp.business.currentweather.ICurrentWeatherInteractor;
+import com.mihailenko.ilya.weatherforecastapp.business.currentweather.WeatherInteractor;
 import com.mihailenko.ilya.weatherforecastapp.common.MyLocationManager;
 import com.mihailenko.ilya.weatherforecastapp.interfaces.LocationListener;
 import com.mihailenko.ilya.weatherforecastapp.ui.presenter.base.BasePresenter;
@@ -20,12 +20,12 @@ import timber.log.Timber;
 public class CurrentWeatherPresenter extends BasePresenter<CurrentWeatherView>
         implements LocationListener {
 
-    private final ICurrentWeatherInteractor weatherInteractor;
+    private final WeatherInteractor weatherInteractor;
     private final MyLocationManager myLocationManager;
     private final ReactiveLocationProvider reactiveLocationProvider;
 
     public CurrentWeatherPresenter(CurrentWeatherView view,
-                                   ICurrentWeatherInteractor weatherInteractor,
+                                   WeatherInteractor weatherInteractor,
                                    MyLocationManager myLocationManager,
                                    ReactiveLocationProvider reactiveLocationProvider) {
         super(view);
