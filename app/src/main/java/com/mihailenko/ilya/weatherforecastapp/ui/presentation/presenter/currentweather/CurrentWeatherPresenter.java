@@ -9,7 +9,6 @@ import com.mihailenko.ilya.weatherforecastapp.ui.presentation.view.currentweathe
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import pl.charmas.android.reactivelocation2.ReactiveLocationProvider;
 
 /**
  * Created by Ilya on 12.06.2017.
@@ -19,21 +18,17 @@ public class CurrentWeatherPresenter extends BasePresenter<CurrentWeatherView> {
 
     private final WeatherInteractor weatherInteractor;
     private final MyLocationManager myLocationManager;
-    private final ReactiveLocationProvider reactiveLocationProvider;
 
     public CurrentWeatherPresenter(CurrentWeatherView view,
                                    WeatherInteractor weatherInteractor,
-                                   MyLocationManager myLocationManager,
-                                   ReactiveLocationProvider reactiveLocationProvider) {
+                                   MyLocationManager myLocationManager) {
         super(view);
         this.weatherInteractor = weatherInteractor;
         this.myLocationManager = myLocationManager;
-        this.reactiveLocationProvider = reactiveLocationProvider;
     }
 
     public void needWeather() {
         addDisposable(myLocationManager.getLastKnownLocation()
-                .filter(location -> location != null)
                 .flatMap(myLocationManager::reverseLocationToCity)
                 .doOnNext(view::setToolbarTittle)
                 .observeOn(Schedulers.io())

@@ -8,9 +8,10 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Window;
+import com.mihailenko.ilya.weatherforecastapp.databinding.LoadingIndicatorBinding;
+
 
 import com.mihailenko.ilya.weatherforecastapp.R;
-import com.mihailenko.ilya.weatherforecastapp.databinding.LoadingIndicatorBinding;
 
 import java.lang.ref.WeakReference;
 import java.util.Timer;

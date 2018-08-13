@@ -13,12 +13,11 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.mihailenko.ilya.weatherforecastapp.R;
 import com.mihailenko.ilya.weatherforecastapp.ui.adapter.ForecastAdapter;
 import com.mihailenko.ilya.weatherforecastapp.models.weather.ForecastDayItem;
-import com.mihailenko.ilya.weatherforecastapp.databinding.ActivityCurrentWeatherBinding;
 import com.mihailenko.ilya.weatherforecastapp.di.currentweather.CurrentWeatherModule;
 import com.mihailenko.ilya.weatherforecastapp.di.currentweather.DaggerCurrentWeatherComponent;
 import com.mihailenko.ilya.weatherforecastapp.ui.presentation.presenter.currentweather.CurrentWeatherPresenter;
 import com.mihailenko.ilya.weatherforecastapp.ui.presentation.view.base.ToolbarActivity;
-import com.mihailenko.ilya.weatherforecastapp.ui.view.currentweather.CurrentLocationWeatherActivityPermissionsDispatcher;
+import com.mihailenko.ilya.weatherforecastapp.databinding.ActivityCurrentWeatherBinding;
 import com.mihailenko.ilya.weatherforecastapp.ui.widget.ItemDivider;
 
 import java.util.List;

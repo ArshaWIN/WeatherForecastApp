@@ -50,8 +50,8 @@ public class CurrentWeatherModule {
 
     @PerActivity
     @Provides
-    CurrentWeatherPresenter provideCurrentWeatherPresenter(WeatherInteractor weatherInteractor, MyLocationManager myLocationManager, ReactiveLocationProvider reactiveLocationProvider) {
-        return new CurrentWeatherPresenter(activity, weatherInteractor, myLocationManager, reactiveLocationProvider);
+    CurrentWeatherPresenter provideCurrentWeatherPresenter(WeatherInteractor weatherInteractor, MyLocationManager myLocationManager) {
+        return new CurrentWeatherPresenter(activity, weatherInteractor, myLocationManager);
     }
 
     @PerActivity
