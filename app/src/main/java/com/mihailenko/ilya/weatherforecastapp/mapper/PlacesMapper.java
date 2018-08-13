@@ -7,7 +7,7 @@ import com.google.gson.JsonParseException;
 import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.TypeRef;
-import com.mihailenko.ilya.weatherforecastapp.data.models.places.Place;
+import com.mihailenko.ilya.weatherforecastapp.models.places.Place;
 
 
 import java.lang.reflect.Type;

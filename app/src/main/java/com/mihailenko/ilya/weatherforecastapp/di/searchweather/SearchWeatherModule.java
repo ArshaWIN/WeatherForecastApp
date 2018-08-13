@@ -5,18 +5,18 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.mihailenko.ilya.weatherforecastapp.R;
-import com.mihailenko.ilya.weatherforecastapp.adapter.CitiesAdapter;
-import com.mihailenko.ilya.weatherforecastapp.adapter.ForecastAdapter;
+import com.mihailenko.ilya.weatherforecastapp.ui.adapter.CitiesAdapter;
+import com.mihailenko.ilya.weatherforecastapp.ui.adapter.ForecastAdapter;
 import com.mihailenko.ilya.weatherforecastapp.business.currentweather.WeatherInteractor;
 import com.mihailenko.ilya.weatherforecastapp.business.searchweather.GooglePlaceInteractor;
 import com.mihailenko.ilya.weatherforecastapp.business.searchweather.GooglePlaceInteractorImpl;
-import com.mihailenko.ilya.weatherforecastapp.data.repositories.places.GooglePlaceRepository;
-import com.mihailenko.ilya.weatherforecastapp.data.repositories.places.GooglePlaceRepositoryImpl;
+import com.mihailenko.ilya.weatherforecastapp.repositories.places.GooglePlaceRepository;
+import com.mihailenko.ilya.weatherforecastapp.repositories.places.GooglePlaceRepositoryImpl;
 import com.mihailenko.ilya.weatherforecastapp.di.PerActivity;
 import com.mihailenko.ilya.weatherforecastapp.network.places.GooglePlacesApi;
-import com.mihailenko.ilya.weatherforecastapp.ui.presenter.searchweather.SearchWeatherPresenter;
-import com.mihailenko.ilya.weatherforecastapp.ui.view.searchweather.SearchWeatherActivity;
-import com.mihailenko.ilya.weatherforecastapp.widget.ItemDivider;
+import com.mihailenko.ilya.weatherforecastapp.ui.presentation.presenter.searchweather.SearchWeatherPresenter;
+import com.mihailenko.ilya.weatherforecastapp.ui.presentation.view.searchweather.SearchWeatherActivity;
+import com.mihailenko.ilya.weatherforecastapp.ui.widget.ItemDivider;
 
 import java.util.Collections;
 

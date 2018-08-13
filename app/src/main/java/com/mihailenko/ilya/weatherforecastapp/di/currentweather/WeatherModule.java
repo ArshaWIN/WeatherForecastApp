@@ -2,8 +2,8 @@ package com.mihailenko.ilya.weatherforecastapp.di.currentweather;
 
 import com.mihailenko.ilya.weatherforecastapp.business.currentweather.WeatherInteractor;
 import com.mihailenko.ilya.weatherforecastapp.business.currentweather.WeatherInteractorImpl;
-import com.mihailenko.ilya.weatherforecastapp.data.repositories.weather.WeatherForecastRepository;
-import com.mihailenko.ilya.weatherforecastapp.data.repositories.weather.WeatherForecastRepositoryImpl;
+import com.mihailenko.ilya.weatherforecastapp.repositories.weather.WeatherForecastRepository;
+import com.mihailenko.ilya.weatherforecastapp.repositories.weather.WeatherForecastRepositoryImpl;
 import com.mihailenko.ilya.weatherforecastapp.di.PerActivity;
 import com.mihailenko.ilya.weatherforecastapp.network.weather.WeatherApi;
 

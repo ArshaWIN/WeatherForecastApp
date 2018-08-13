@@ -6,8 +6,8 @@ import android.widget.Toast;
 
 
 import com.mihailenko.ilya.weatherforecastapp.R;
-import com.mihailenko.ilya.weatherforecastapp.interfaces.HasLocalizedMessage;
-import com.mihailenko.ilya.weatherforecastapp.interfaces.MessageShower;
+import com.mihailenko.ilya.weatherforecastapp.ui.interfaces.HasLocalizedMessage;
+import com.mihailenko.ilya.weatherforecastapp.ui.interfaces.MessageShower;
 
 
 /**

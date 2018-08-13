@@ -2,12 +2,9 @@ package com.mihailenko.ilya.weatherforecastapp.di;
 
 
 import android.content.Context;
-import android.location.LocationManager;
 
-import com.mihailenko.ilya.weatherforecastapp.ui.view.base.BaseActivity;
-import com.mihailenko.ilya.weatherforecastapp.widget.LoadingIndicator;
-
-import javax.inject.Singleton;
+import com.mihailenko.ilya.weatherforecastapp.ui.presentation.view.base.BaseActivity;
+import com.mihailenko.ilya.weatherforecastapp.ui.widget.LoadingIndicator;
 
 import dagger.Module;
 import dagger.Provides;

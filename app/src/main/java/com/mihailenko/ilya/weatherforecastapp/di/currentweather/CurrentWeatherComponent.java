@@ -2,7 +2,7 @@ package com.mihailenko.ilya.weatherforecastapp.di.currentweather;
 
 import com.mihailenko.ilya.weatherforecastapp.di.ActivityComponent;
 import com.mihailenko.ilya.weatherforecastapp.di.PerActivity;
-import com.mihailenko.ilya.weatherforecastapp.ui.view.currentweather.CurrentLocationWeatherActivity;
+import com.mihailenko.ilya.weatherforecastapp.ui.presentation.view.currentweather.CurrentLocationWeatherActivity;
 
 import dagger.Component;
 

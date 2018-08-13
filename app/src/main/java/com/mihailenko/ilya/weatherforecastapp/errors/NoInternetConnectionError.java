@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 
 
 import com.mihailenko.ilya.weatherforecastapp.R;
-import com.mihailenko.ilya.weatherforecastapp.interfaces.HasLocalizedMessage;
+import com.mihailenko.ilya.weatherforecastapp.ui.interfaces.HasLocalizedMessage;
 
 import java.io.IOException;
 

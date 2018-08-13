@@ -1,6 +1,6 @@
 package com.mihailenko.ilya.weatherforecastapp.business.currentweather;
 
-import com.mihailenko.ilya.weatherforecastapp.data.item.ForecastDayItem;
+import com.mihailenko.ilya.weatherforecastapp.models.weather.ForecastDayItem;
 
 import java.util.List;
 

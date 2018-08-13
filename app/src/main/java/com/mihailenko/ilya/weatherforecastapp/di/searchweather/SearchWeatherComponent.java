@@ -3,7 +3,7 @@ package com.mihailenko.ilya.weatherforecastapp.di.searchweather;
 import com.mihailenko.ilya.weatherforecastapp.di.ActivityComponent;
 import com.mihailenko.ilya.weatherforecastapp.di.PerActivity;
 import com.mihailenko.ilya.weatherforecastapp.di.currentweather.WeatherModule;
-import com.mihailenko.ilya.weatherforecastapp.ui.view.searchweather.SearchWeatherActivity;
+import com.mihailenko.ilya.weatherforecastapp.ui.presentation.view.searchweather.SearchWeatherActivity;
 
 import dagger.Component;
 

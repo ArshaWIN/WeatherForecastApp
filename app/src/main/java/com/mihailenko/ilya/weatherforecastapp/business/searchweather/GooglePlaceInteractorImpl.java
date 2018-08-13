@@ -1,9 +1,8 @@
 package com.mihailenko.ilya.weatherforecastapp.business.searchweather;
 
-import com.mihailenko.ilya.weatherforecastapp.data.models.places.Place;
-import com.mihailenko.ilya.weatherforecastapp.data.repositories.places.GooglePlaceRepository;
+import com.mihailenko.ilya.weatherforecastapp.models.places.Place;
+import com.mihailenko.ilya.weatherforecastapp.repositories.places.GooglePlaceRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Single;

@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".ui.view.splashscreen.SplashScreenActivity"
+            android:name=".ui.presentation.view.splashscreen.SplashScreenActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,11 +24,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.view.main.MainActivity" />
+        <activity android:name=".ui.presentation.view.main.MainActivity" />
 
-        <activity android:name=".ui.view.currentweather.CurrentLocationWeatherActivity" />
+        <activity android:name=".ui.presentation.view.currentweather.CurrentLocationWeatherActivity" />
 
-        <activity android:name=".ui.view.searchweather.SearchWeatherActivity" />
+        <activity android:name=".ui.presentation.view.searchweather.SearchWeatherActivity" />
 
     </application>
 

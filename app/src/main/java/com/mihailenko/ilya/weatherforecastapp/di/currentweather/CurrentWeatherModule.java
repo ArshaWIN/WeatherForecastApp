@@ -7,13 +7,13 @@ import android.support.v7.widget.RecyclerView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.mihailenko.ilya.weatherforecastapp.R;
-import com.mihailenko.ilya.weatherforecastapp.adapter.ForecastAdapter;
+import com.mihailenko.ilya.weatherforecastapp.ui.adapter.ForecastAdapter;
 import com.mihailenko.ilya.weatherforecastapp.business.currentweather.WeatherInteractor;
 import com.mihailenko.ilya.weatherforecastapp.common.MyLocationManager;
 import com.mihailenko.ilya.weatherforecastapp.di.PerActivity;
-import com.mihailenko.ilya.weatherforecastapp.ui.presenter.currentweather.CurrentWeatherPresenter;
-import com.mihailenko.ilya.weatherforecastapp.ui.view.currentweather.CurrentLocationWeatherActivity;
-import com.mihailenko.ilya.weatherforecastapp.widget.ItemDivider;
+import com.mihailenko.ilya.weatherforecastapp.ui.presentation.presenter.currentweather.CurrentWeatherPresenter;
+import com.mihailenko.ilya.weatherforecastapp.ui.presentation.view.currentweather.CurrentLocationWeatherActivity;
+import com.mihailenko.ilya.weatherforecastapp.ui.widget.ItemDivider;
 
 import java.util.Collections;
 

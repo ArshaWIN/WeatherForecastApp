@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.mihailenko.ilya.weatherforecastapp.ui.view.main.ChooseActivityClickListener" />
+            type="com.mihailenko.ilya.weatherforecastapp.ui.presentation.view.main.ChooseActivityClickListener" />
     </data>
 
     <android.support.constraint.ConstraintLayout

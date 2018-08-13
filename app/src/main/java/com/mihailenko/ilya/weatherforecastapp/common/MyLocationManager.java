@@ -11,7 +11,6 @@ import com.mihailenko.ilya.weatherforecastapp.errors.NoGpsPermissionsError;
 import com.mihailenko.ilya.weatherforecastapp.utils.CheckPermissionUtils;
 
 import java.lang.ref.WeakReference;
-import java.util.List;
 
 import io.reactivex.Observable;
 import pl.charmas.android.reactivelocation2.ReactiveLocationProvider;
