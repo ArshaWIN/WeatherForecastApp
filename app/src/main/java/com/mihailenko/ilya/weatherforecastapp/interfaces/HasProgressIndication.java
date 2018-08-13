@@ -1,8 +1,8 @@
 package com.mihailenko.ilya.weatherforecastapp.interfaces;
 
 public interface HasProgressIndication {
-    void onStartProgress();
+    void startProgress();
 
-    void onEndProgress();
+    void finishProgress();
 
 }

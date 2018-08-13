@@ -1,5 +1,6 @@
 package com.mihailenko.ilya.weatherforecastapp.business.searchweather;
 
+import com.mihailenko.ilya.weatherforecastapp.data.models.places.Place;
 import com.mihailenko.ilya.weatherforecastapp.data.repositories.places.GooglePlaceRepository;
 
 import java.util.ArrayList;
@@ -19,19 +20,9 @@ public class GooglePlaceInteractorImpl implements GooglePlaceInteractor {
         this.googlePlaceRepository = googlePlaceRepository;
     }
 
-    private List<String> getCities() {
-        List<String> strings = new ArrayList<>();
-        strings.add("Krasnodar");
-        strings.add("Moscow");
-        strings.add("Ustka");
-
-        return strings;
-    }
-
     @Override
     public Single<List<String>> findSuggestions(String input) {
-        return Single.just(getCities());
-//        return googlePlaceRepository.getSuggestions(input)
-//                .map(Place::getSuggestions);
+        return googlePlaceRepository.getSuggestions(input)
+                .map(Place::getSuggestions);
     }
 }

@@ -5,11 +5,11 @@ import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
 
-import com.google.android.gms.location.LocationRequest;
-import com.mihailenko.ilya.weatherforecastapp.interfaces.LocationListener;
+import com.mihailenko.ilya.weatherforecastapp.errors.GpsDisabledError;
+import com.mihailenko.ilya.weatherforecastapp.errors.NoGpsPermissionsError;
 import com.mihailenko.ilya.weatherforecastapp.utils.CheckPermissionUtils;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.Observable;
 import pl.charmas.android.reactivelocation2.ReactiveLocationProvider;
 
 /**
@@ -17,89 +17,29 @@ import pl.charmas.android.reactivelocation2.ReactiveLocationProvider;
  */
 
 public class MyLocationManager {
-    private static final long LOCATION_UPDATE_INTERVAL = 5000;
 
     private Activity activity;
-
-    private LocationListener locationListener;
     private ReactiveLocationProvider reactiveLocationProvider;
-
-
-    private Location myLocation;
-
 
     public MyLocationManager(Activity activity, ReactiveLocationProvider reactiveLocationProvider) {
         this.activity = activity;
-        this.reactiveLocationProvider =  reactiveLocationProvider;
-
-        listenToLocationUpdates();
-
+        this.reactiveLocationProvider = reactiveLocationProvider;
     }
 
     @SuppressWarnings("MissingPermission")
-    private void getLastKnownLocation() {
-        reactiveLocationProvider.getLastKnownLocation()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(location -> {
-                    myLocation = location;
-                    onLocationGet();
-                }, throwable -> onGetLocationError());
-    }
-
-    @SuppressWarnings("MissingPermission")
-    private void listenToLocationUpdates() {
-        LocationRequest locationRequest = LocationRequest.create()
-                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-                .setInterval(LOCATION_UPDATE_INTERVAL);
-
-        reactiveLocationProvider
-                .getUpdatedLocation(locationRequest)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(location -> myLocation = location, throwable -> onGetLocationError());
-    }
-
-    @SuppressWarnings("MissingPermission")
-    public void needLocation(LocationListener locationListener) {
-        if (locationListener == null) {
-            return;
-        }
-
-        this.locationListener = locationListener;
+    public Observable<Location> getLastKnownLocation() {
         if (!CheckPermissionUtils.hasGPSPermissions(activity)) {
-            locationListener.onPermissionNeed();
-            return;
+            return Observable.error(new NoGpsPermissionsError());
         }
         if (!isGPSEnabled()) {
-            locationListener.onGPSDisabled();
-            return;
+            return Observable.error(new GpsDisabledError());
         }
 
-        if (myLocation == null) {
-            getLastKnownLocation();
-            return;
-        }
-
-        onLocationGet();
+        return reactiveLocationProvider.getLastKnownLocation();
     }
-
-    private void onGetLocationError() {
-        if (locationListener != null) {
-            locationListener.onGPSError();
-        }
-    }
-
-    private void onLocationGet() {
-        if (locationListener != null) {
-            locationListener.onLocationGet(myLocation);
-        }
-
-        locationListener = null;
-    }
-
 
     private boolean isGPSEnabled() {
         final LocationManager manager = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
-        return manager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-
+        return manager != null && manager.isProviderEnabled(LocationManager.GPS_PROVIDER);
     }
 }

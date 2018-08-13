@@ -20,5 +20,4 @@ public interface CurrentWeatherView extends BaseView, HasProgressIndication, Can
 
     void onPermissionNeed();
 
-    void showGPSError(int error);
 }

@@ -76,6 +76,4 @@ public class SearchWeatherModule {
     RecyclerView.LayoutManager provideLayoutManager() {
         return new LinearLayoutManager(searchWeatherActivity);
     }
-
-
 }

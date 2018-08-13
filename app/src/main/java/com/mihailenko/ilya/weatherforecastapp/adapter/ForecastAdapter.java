@@ -72,7 +72,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         notifyDataSetChanged();
     }
 
-    abstract class ForecastViewHolder<TBinding extends ViewDataBinding> extends RecyclerView.ViewHolder {
+    abstract static class ForecastViewHolder<TBinding extends ViewDataBinding> extends RecyclerView.ViewHolder {
         private final TBinding binding;
 
         ForecastViewHolder(View view) {
@@ -85,13 +85,13 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         }
     }
 
-    private class ForecastCurrentWeather extends ForecastViewHolder<ItemCurrentWeatherBinding> {
+    private static class ForecastCurrentWeather extends ForecastViewHolder<ItemCurrentWeatherBinding> {
         ForecastCurrentWeather(View view) {
             super(view);
         }
     }
 
-    private class ForecastDay extends ForecastViewHolder<ItemDayForecastBinding> {
+    private static class ForecastDay extends ForecastViewHolder<ItemDayForecastBinding> {
         ForecastDay(View view) {
             super(view);
         }

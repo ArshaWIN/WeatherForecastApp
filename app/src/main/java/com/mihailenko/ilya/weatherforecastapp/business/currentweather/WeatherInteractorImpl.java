@@ -3,7 +3,7 @@ package com.mihailenko.ilya.weatherforecastapp.business.currentweather;
 import com.mihailenko.ilya.weatherforecastapp.data.item.ForecastDayItem;
 import com.mihailenko.ilya.weatherforecastapp.data.models.weather.Weather;
 import com.mihailenko.ilya.weatherforecastapp.data.repositories.weather.WeatherForecastRepository;
-import com.mihailenko.ilya.weatherforecastapp.errors.ForecastNotFoundThrowable;
+import com.mihailenko.ilya.weatherforecastapp.errors.ForecastNotFoundError;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class WeatherInteractorImpl implements WeatherInteractor {
                 .toList()
                 .flatMap(forecastDayItems -> {
                     if (forecastDayItems.isEmpty()) {
-                        return Single.error(new ForecastNotFoundThrowable());
+                        return Single.error(new ForecastNotFoundError());
                     }
                     return Single.just(forecastDayItems);
                 });

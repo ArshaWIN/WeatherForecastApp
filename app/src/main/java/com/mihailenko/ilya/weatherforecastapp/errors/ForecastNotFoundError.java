@@ -12,7 +12,7 @@ import java.io.IOException;
  * Created by Ilya on 13.06.2017.
  */
 
-public class ForecastNotFoundThrowable extends IOException implements HasLocalizedMessage {
+public class ForecastNotFoundError extends Exception implements HasLocalizedMessage {
     @Override
     public String getMessage(@NonNull Context context) {
         return context.getString(R.string.error_forecast);

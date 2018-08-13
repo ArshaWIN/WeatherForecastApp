@@ -66,7 +66,7 @@ public class CurrentLocationWeatherActivity extends ToolbarActivity<ActivityCurr
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        createAdapter();
+        initAdapter();
 
         binding.setHasData(false);
         binding.swipeRefreshLayout.setOnRefreshListener(() -> CurrentLocationWeatherActivityPermissionsDispatcher.needWeatherWithCheck(this));
@@ -104,11 +104,6 @@ public class CurrentLocationWeatherActivity extends ToolbarActivity<ActivityCurr
     }
 
     @Override
-    public void showGPSError(int error) {
-        showMessage(error);
-    }
-
-    @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         CurrentLocationWeatherActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
@@ -120,7 +115,7 @@ public class CurrentLocationWeatherActivity extends ToolbarActivity<ActivityCurr
     }
 
 
-    private void createAdapter() {
+    private void initAdapter() {
         binding.weatherList.setLayoutManager(layoutManager);
         binding.weatherList.addItemDecoration(itemDivider);
         binding.weatherList.setAdapter(forecastAdapter);
@@ -144,12 +139,12 @@ public class CurrentLocationWeatherActivity extends ToolbarActivity<ActivityCurr
     }
 
     @Override
-    public void onStartProgress() {
+    public void startProgress() {
         binding.swipeRefreshLayout.setRefreshing(true);
     }
 
     @Override
-    public void onEndProgress() {
+    public void finishProgress() {
         binding.swipeRefreshLayout.setRefreshing(false);
     }
 }

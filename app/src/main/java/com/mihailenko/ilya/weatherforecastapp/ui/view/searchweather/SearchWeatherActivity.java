@@ -104,12 +104,12 @@ public class SearchWeatherActivity extends ToolbarActivity<ActivitySearchWeather
     }
 
     @Override
-    public void onStartProgress() {
+    public void startProgress() {
         loadingIndicator.show();
     }
 
     @Override
-    public void onEndProgress() {
+    public void finishProgress() {
         loadingIndicator.dismiss();
     }
 

@@ -22,7 +22,6 @@ public class SearchWeatherPresenter extends BasePresenter<SearchWeatherView> {
                                   WeatherInteractor currentWeatherInteractor,
                                   GooglePlaceInteractor googlePlaceInteractor) {
         super(view);
-
         this.currentWeatherInteractor = currentWeatherInteractor;
         this.googlePlaceInteractor = googlePlaceInteractor;
     }
@@ -30,8 +29,8 @@ public class SearchWeatherPresenter extends BasePresenter<SearchWeatherView> {
     public void onCitySelected(String city) {
         addDisposable(currentWeatherInteractor.getForecast(city)
                 .compose(RxSchedulers.applySingleAsync())
-                .doOnSubscribe(any -> view.onStartProgress())
-                .doFinally(view::onEndProgress)
+                .doOnSubscribe(any -> view.startProgress())
+                .doFinally(view::finishProgress)
                 .subscribe(view::showForecast, throwable -> {
                     view.showMessage(throwable);
                     view.setToolbarTittle(R.string.find_city);
