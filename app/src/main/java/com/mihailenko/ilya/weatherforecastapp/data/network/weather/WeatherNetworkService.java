@@ -1,8 +1,11 @@
-package com.mihailenko.ilya.weatherforecastapp.network.weather;
+package com.mihailenko.ilya.weatherforecastapp.data.network.weather;
 
 import com.google.gson.Gson;
 import com.mihailenko.ilya.weatherforecastapp.BuildConfig;
 import com.mihailenko.ilya.weatherforecastapp.network.interceptors.NetworkErrorInterceptor;
+import com.mihailenko.ilya.weatherforecastapp.network.weather.WeatherApi;
+import com.mihailenko.ilya.weatherforecastapp.network.weather.WeatherApiConstans;
+import com.mihailenko.ilya.weatherforecastapp.network.weather.WeatherApiProvider;
 
 import java.util.concurrent.TimeUnit;
 
