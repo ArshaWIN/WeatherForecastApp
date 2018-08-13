@@ -35,10 +35,8 @@ public class CurrentWeatherPresenter extends BasePresenter<CurrentWeatherView> {
 
     public void needWeather() {
         addDisposable(myLocationManager.getLastKnownLocation()
-                .flatMap(location -> reactiveLocationProvider.getReverseGeocodeObservable(location.getLatitude(), location.getLongitude(), 1))
-                .filter(addresses -> addresses != null && !addresses.isEmpty())
-                .map(addresses -> addresses.get(0))
-                .map(Address::getLocality)
+                .filter(location -> location != null)
+                .flatMap(myLocationManager::reverseLocationToCity)
                 .doOnNext(view::setToolbarTittle)
                 .observeOn(Schedulers.io())
                 .flatMapSingle(weatherInteractor::getForecast)
